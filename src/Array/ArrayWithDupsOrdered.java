@@ -1,11 +1,11 @@
 package Array;
 
 /*
- * The major advantage is that search
-times are much faster than in an unordered array. The disadvantage is that insertion
-takes longer because all the data items with a higher key value must be moved up to
-make room. Deletions are slow in both ordered and unordered arrays because items
-must be moved down to fill the hole left by the deleted item.
+ *  The major advantage is that search 
+ *  times are much faster than in an unordered array. The disadvantage is that insertion
+ *  takes longer because all the data items with a higher key value must be moved up to
+ *  make room. Deletions are slow in both ordered and unordered arrays because items
+ *  must be moved down to fill the hole left by the deleted item.
  */
 public class ArrayWithDupsOrdered extends Employee {
 
@@ -18,7 +18,8 @@ public class ArrayWithDupsOrdered extends Employee {
 	// Max Database size, we could not afford more than this size of Employee
 	final static int MAX_SIZE = 20;
 
-	public ArrayWithDupsOrdered(){}
+	public ArrayWithDupsOrdered() {
+	}
 
 	public ArrayWithDupsOrdered(int empID, String empName, int empAge) {
 		super(empID, empName, empAge);
@@ -43,20 +44,23 @@ public class ArrayWithDupsOrdered extends Employee {
 			System.out.println("Database limit Reach");
 			return;
 		}
-		
+
 		int lowerIndex = 0, higherIndex = currentIndex;
 		int currentLocation = 0;
 
 		while (true) {
 			currentLocation = (lowerIndex + higherIndex) / 2;
 
+			if (employeeDatabase[currentLocation].empId < this.empId) {
+				lowerIndex = currentLocation + 1;
+				if (lowerIndex > higherIndex) {
+					currentLocation = currentLocation + 1;
+					break;
+				}
+			} else
+				higherIndex = currentLocation - 1;
 			if (lowerIndex > higherIndex) {
 				break;
-			} else {
-				if (employeeDatabase[currentLocation].empId < this.empId) {
-					lowerIndex = currentLocation + 1;
-				} else
-					higherIndex = currentLocation - 1;
 			}
 		}
 
@@ -67,68 +71,99 @@ public class ArrayWithDupsOrdered extends Employee {
 		currentIndex++;
 	}
 
-
-	/****************************************************************************	
-	 * 	Assuming Duplicates are Allowed									   		*
+	/****************************************************************************
+	 * Assuming Duplicates are Allowed *
 	 * **************************************************************************
-	 * In This we will delete only the first occurance of matched item								   		*
+	 * In This we will delete only the first occurance of matched item *
 	 * **************************************************************************
-	 * A deletion requires searching through an average of N/2 elements and 	*
-	 * then moving the remaining elements (an average of N/2 moves) to fill 	*
-	 * up the resulting hole. This is N steps in all.					   		*
+	 * A deletion requires searching through an average of N/2 elements and *
+	 * then moving the remaining elements (an average of N/2 moves) to fill * up
+	 * the resulting hole. This is N steps in all. *
 	 ****************************************************************************/
 	@Override
 	void delete() {
+		//Initializing lower Index and Higher index [ Assumption]
+		int lowerIndex =0, higherIndex = currentIndex;
+		int currentLocation =0;
+		
+		if (currentIndex == -1){
+			System.out.println("No Data present in DB to delete");
+		}
+		
+		while (true){
+			currentLocation = (lowerIndex + higherIndex)/2;
+						
+			//Check if currentLocation data is matching with element or not
+			if (employeeDatabase[currentLocation].empId == this.empId){
+				System.out.println(
+						"Employee Id: " + employeeDatabase[currentLocation].empId + " is present in index :" + currentLocation);
+				break;
+			} else{
+				if (employeeDatabase[currentLocation].empId <= this.empId){
+					lowerIndex = currentLocation + 1;
+					if (lowerIndex > higherIndex){
+						break;
+					}
+				}else{
+					higherIndex = currentLocation - 1;
+					if (lowerIndex > higherIndex){
+						break;
+					}
+				}
+			}
+			
+		}
+		for (int index = currentIndex ; index >= currentLocation; index--){
+			employeeDatabase[currentLocation] = employeeDatabase[currentLocation+1];
+		}
+		
+		employeeDatabase[currentIndex] = null;
+		currentIndex--;
 		
 	}
-	
+
 	/***************************************************************************
-	 * Assuming Duplicates are Allowed and data is in Sorted Order
-	 * BINARY SEARCH							   	   *
+	 * Assuming Duplicates are Allowed and data is in Sorted Order BINARY SEARCH
+	 * *
 	 * *************************************************************************
-	 * In This we will find only the first occurrence of matched item								   		*
+	 * In This we will find only the first occurrence of matched item *
 	 * **************************************************************************
-	 * Average Case:														   *
-	 * 	If "N" is the number average steps need to find an item is N/2	       *
-	 * 																		   *
-	 * Worst Case:															   *
-	 * 	EIther, the specified item is in the last cell, or item is not present,*
-	 * Code need to traverse "N" Steps to provide answer.
-	 * 				   *
+	 * Average Case: * If "N" is the number average steps need to find an item
+	 * is N/2 * * Worst Case: * EIther, the specified item is in the last cell,
+	 * or item is not present,* Code need to traverse "N" Steps to provide
+	 * answer. *
 	 ***************************************************************************/
 	@Override
 	int find() {
-		//Initializing lower Index and higher Index [Assuming] 
-		int lowerIndex =0, higherIndex = currentIndex;
-		//Initializing half of lower and higher 
-		
-		if (currentIndex == -1)
-		{
+		// Initializing lower Index and higher Index [Assuming]
+		int lowerIndex = 0, higherIndex = currentIndex;
+		// Initializing half of lower and higher
+
+		if (currentIndex == -1) {
 			System.out.println("No Value Present In DB for Search");
 			return -1;
 		}
-		//Start Infinite Loop
-		while (true){
-			int currentLoc = (lowerIndex + higherIndex)/2;
-			//Check Current Location element is matching if yes
-			if(employeeDatabase[currentLoc].empId == this.empId){
-				System.out.println("Employee Id: " + employeeDatabase[currentLoc].empId + " is present in index :" + currentLoc);
+		// Start Infinite Loop
+		while (true) {
+			int currentLoc = (lowerIndex + higherIndex) / 2;
+			// Check Current Location element is matching if yes
+			if (employeeDatabase[currentLoc].empId == this.empId) {
+				System.out.println(
+						"Employee Id: " + employeeDatabase[currentLoc].empId + " is present in index :" + currentLoc);
 				return currentLoc;
-			}
-			else if(lowerIndex > higherIndex){
+			} else if (lowerIndex > higherIndex) {
 				System.out.println("Employee Id: " + this.empId + " is not present in Database");
 				return -1;
-			}
-			else{
-				if(employeeDatabase[currentLoc].empId < this.empId){
-					lowerIndex = currentLoc +1;
-				}
-				else{
+			} else {
+				if (employeeDatabase[currentLoc].empId < this.empId) {
+					lowerIndex = currentLoc + 1;
+				} else {
 					higherIndex = currentLoc - 1;
 				}
 			}
 		}
 	}
+
 	public static void main(String[] args) {
 		employeeDatabase = new ArrayWithDupsOrdered[MAX_SIZE];
 		ArrayWithDupsOrdered employee = null;
@@ -137,27 +172,20 @@ public class ArrayWithDupsOrdered extends Employee {
 		employee.insert();
 		employee = new ArrayWithDupsOrdered(1, "Abhijeet", 22);
 		employee.insert();
-		
+
 		employee = new ArrayWithDupsOrdered(5, "Abhijeet", 22);
 		employee.insert();
-		/*
-		employee = new ArrayWithDupsOrdered(7, "Abhijeet", 22);
-		employee.insert();
-		employee = new ArrayWithDupsOrdered(8, "Abhijeet", 22);
-		employee.insert();
-		employee = new ArrayWithDupsOrdered(9, "Abhijeet", 22);
-		employee.insert();
-		employee = new ArrayWithDupsOrdered(10, "Abhijeet", 22);
-		employee.insert();
-		employee = new ArrayWithDupsOrdered(12, "Abhijeet", 22);
-		employee.insert();
-		employee = new ArrayWithDupsOrdered(14, "Abhijeet", 22);
-		employee.insert();
-		employee = new ArrayWithDupsOrdered(16, "Abhijeet", 22);
-		employee.insert();*/
-		employee = new ArrayWithDupsOrdered(1, "Abhijeet", 22);
+		
+		employee = new ArrayWithDupsOrdered(3, "Abhijeet", 22);
 		employee.find();
 		employee.display(employeeDatabase, employeeDatabase.length);
+		
+		employee.delete();
+		employee.display(employeeDatabase, employeeDatabase.length);
+		
+		System.out.println(currentIndex);
+		
+		
 
 	}
 

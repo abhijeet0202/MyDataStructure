@@ -55,10 +55,11 @@ public class ArrayWithDupsNoOrdered extends Employee {
 				break;
 		}
 		//Filling the holes
-		for (int i = index; i < currentIndex +1; i++){
+		for (int i = index; i < currentIndex; i++){
 			employeeDatabase[i] = employeeDatabase[i +1];
 		}
-		//Decrementing current size with -1
+		//Decrementing current size with -1 and setting last index null
+		employeeDatabase[currentIndex]= null;
 		currentIndex--;
 	}
 	/****************************************************************************	
@@ -80,10 +81,11 @@ public class ArrayWithDupsNoOrdered extends Employee {
 		for (; index <= currentIndex; index++) {
 			if (employeeDatabase[index].empId == this.empId) {
 				// Filling the holes
-				for (int j = index; j < currentIndex + 1; j++) {
+				for (int j = index; j < currentIndex; j++) {
 					employeeDatabase[j] = employeeDatabase[j+1];
 				}
-				//Decrementing current size with -1
+				//Decrementing current size with -1 and setting last index null "unused"
+				employeeDatabase[currentIndex]= null;
 				currentIndex--;
 				/*
 				 * Re-setting to 0, so that if element which we are deleting present
@@ -158,8 +160,8 @@ public class ArrayWithDupsNoOrdered extends Employee {
 		employee = new ArrayWithDupsNoOrdered(4, "Abhijeet", 21);
 		employee.insert();
 		employee.display(employeeDatabase, employeeDatabase.length);
-		System.out.println("*****************Current Size:"+currentIndex);
-		employee = new ArrayWithDupsNoOrdered(1, "Abhijeet", 21);
+		/*System.out.println("*****************Current Size:"+currentIndex);
+		employee = new ArrayWithDupsNoOrdered(3, "Abhijeet", 21);
 		employee.delete();
 		System.out.println("*****************Current Size:"+currentIndex);
 		employee.display(employeeDatabase, employeeDatabase.length);
@@ -167,7 +169,7 @@ public class ArrayWithDupsNoOrdered extends Employee {
 		employee.find();
 		employee.delete();
 		System.out.println("*****************Current Size:"+currentIndex);
-		employee.display(employeeDatabase, employeeDatabase.length);
+		employee.display(employeeDatabase, employeeDatabase.length);*/
 		employee = new ArrayWithDupsNoOrdered(2, "Abhijeet", 22);
 		employee.deleteAllOccurance();
 		System.out.println("*****************Current Size:"+currentIndex);

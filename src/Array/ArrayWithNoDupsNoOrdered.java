@@ -83,7 +83,8 @@ public final class ArrayWithNoDupsNoOrdered extends Employee {
 		for (int i = index; i < currentIndex; i++) {
 			employeeDatabase[i] = employeeDatabase[i+1];
 		}
-		//Decrementing current size with -1
+		//Decrementing current size with -1 and setting null current index "unused"
+		employeeDatabase[currentIndex]= null;
 		currentIndex--;
 	}
 	/***************************************************************************
