@@ -7,68 +7,66 @@ package Queue;
  * @author Aryan
  *
  */
-public class ArrayCircularqueue extends Queue {
+public class ArrayCircularQueue<T> extends Queue<T> {
 
-	static Queue[] arrayCircularqueue;
 
-	ArrayCircularqueue() {
+	ArrayCircularQueue() {
 	}
 
-	ArrayCircularqueue(int element) {
-		super(element);
+	ArrayCircularQueue(int maxSize) {
+		super(maxSize);
 	}
 
 	@Override
-	boolean insert(int element) {
+	void insert(T element) {
 
 		if (((rear+1)%MAX_SIZE)== front) {
-			System.out.println("Queue OverFlow...");
-			return false;
+			throw new StackOverflowError("Queue OverFlow...");
 		} else {
 			rear =(rear+1)%MAX_SIZE;
-			Queue queue = new ArrayCircularqueue(element);
-			ArrayCircularqueue.arrayCircularqueue[rear] = queue;
+			this.element[rear] = element;
 			System.out.println("Successfully Inserted Element: " + element + " in head index :" + rear);
 			if (front == -1)
 				front =0;
-			return true;
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	boolean remove() {
+	T remove() {
 		if (front == -1 ){
-			System.out.println("Queue UnderFlows...");
-			return false;
+			throw new StackOverflowError("Queue UnderFlows...");
 		}
 		else {
 			
-			System.out.println("Initaited Removing Element: " + ArrayCircularqueue.arrayCircularqueue[front]
+			System.out.println("Initaited Removing Element: " + this.element[front]
 					+ " from head index :" + front);
-			ArrayCircularqueue.arrayCircularqueue[front] = null;
+			Object returnValue = this.element[front];
+			this.element[front] = null;
 			
-			System.out.println("Successfully Removed Element: " + ArrayCircularqueue.arrayCircularqueue[front]
+			System.out.println("Successfully Removed Element: " + this.element[front]
 					+ " in head index :" + front);
 			
 			if(front == rear)
 				front = rear =-1;
 			else
 				front = (front + 1) % MAX_SIZE;
-			return true;
+			return (T) returnValue;
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	boolean peek() {
+	T peek() {
 		if (front == -1 || front != rear) {
-			System.out.println("Queue UnderFlow...");
-			return false;
+			throw new StackOverflowError("Queue UnderFlow...");
 		}else{
-			System.out.println("Front Element is: " + ArrayCircularqueue.arrayCircularqueue[front] + " in index :" + front);
-			return true;
+			System.out.println("Front Element is: " + this.element[front] + " in index :" + front);
+			return (T) this.element[front];
 		}
 	}
 	
+	@Override
 	boolean isEmpty() {
 		if (rear == -1)
 			return true;
@@ -77,7 +75,7 @@ public class ArrayCircularqueue extends Queue {
 				
 	}
 
-
+	@Override
 	boolean isFull() {
 		if (((rear+1)%MAX_SIZE)== front){
 			return true;
@@ -88,16 +86,16 @@ public class ArrayCircularqueue extends Queue {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		arrayCircularqueue = new ArrayCircularqueue[MAX_SIZE];
+		int maxSize = 20;
 
-		ArrayCircularqueue arrayCircularqueue = new ArrayCircularqueue();
-		for (int i = 0; i < 21; i++) {
+		Queue<Integer> arrayCircularqueue = new ArrayCircularQueue<Integer>(maxSize);
+		for (int i = 0; i < maxSize; i++) {
 			arrayCircularqueue.insert(i*2);
 		}
 		System.out.println(arrayCircularqueue.isEmpty());
 		System.out.println(arrayCircularqueue.isFull());
 
-		for (int i = 0; i < 21; i++) {
+		for (int i = 0; i < maxSize; i++) {
 			arrayCircularqueue.remove();
 		}
 		arrayCircularqueue.insert(2);

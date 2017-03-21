@@ -7,51 +7,46 @@ package Queue;
  * @author Aryan
  *
  */
-public abstract class Queue {
+abstract class Queue<T> {
 	
-	int element;
-	public int rear = -1;
-	public int front = -1;
-	public final static int MAX_SIZE = 20;
+	protected final Object[] element;
+	protected int rear = -1;
+	protected int front = -1;
+	protected int MAX_SIZE = 20;
 
 	public Queue() {
+		this.MAX_SIZE = 20;
+		this.element = new Object[MAX_SIZE];
 	}
 
-	Queue(int element) {
-		this.element = element;
+	Queue(int maxSize) {
+		this.MAX_SIZE = maxSize;
+		this.element = new Object[maxSize];
 	}
 
-	abstract boolean insert(int stack);
+	abstract void insert(T stack);
 
-	abstract boolean remove();
+	abstract T remove();
 
-	abstract boolean peek();
+	abstract T peek();
+	
+	abstract boolean isEmpty();
+	
+	abstract boolean isFull();
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see java.lang.Object#toString()
 	 */
 
-	boolean isEmpty() {
-
-		if (front <= -1 || front >= rear) {
-			return true;
-		}
-
-		return false;
-	}
-
-	boolean isFull() {
-		if (rear >= MAX_SIZE-1) {
-			return true;
-		}
-		return false;
-	}
-
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Stack [element=").append(element).append("]");
+		builder.append("Queue Elements:\n");
+		for (int i = 0; i<element.length; i++){
+			builder.append("Element in Index[").append(i).append("] is [").append(this.element[i]).append("]\n");
+		}
 		return builder.toString();
 	}
 }

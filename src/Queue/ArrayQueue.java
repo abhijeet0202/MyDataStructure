@@ -1,67 +1,81 @@
 package Queue;
 
-public class ArrayQueue extends Queue {
+public class ArrayQueue<T> extends Queue<T> {
 	
-	static Queue[] queue;
-
 	ArrayQueue(){}
-	ArrayQueue(int element){
-		super(element);
+	ArrayQueue(int maxSize){
+		super(maxSize);
 	}
 	
 	@Override
-	boolean insert(int element) {
+	void insert(T element) {
 		if (rear < MAX_SIZE-1) {
-			Queue queue = new ArrayQueue(element);
-			ArrayQueue.queue[++rear] = queue;
+			if(rear == -1)
+				++front;
+			this.element[++rear] = element;
 			System.out.println("Successfully Inserted Element: " + element + " in head index :" + rear);
-			return true;
 		}else{
-			System.out.println("Queue OverFlow...");
-			return false;
+			throw new StackOverflowError("Queue OverFlow...");
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	boolean remove() {
+	T remove() {
 		if (front >= 0 && front <= rear) {
-			System.out.println("Initaited Removing Element: " + ArrayQueue.queue[front] + " from head index :" + front);
-			ArrayQueue.queue[front] = null;
-			System.out.println("Successfully Removed Element: " + ArrayQueue.queue[front] + " in head index :" + front);
+			System.out.println("Initaited Removing Element: " + this.element[front] + " from head index :" + front);
+			Object returnValue = this.element[front];
+			this.element[front] = null;
+			System.out.println("Successfully Removed Element: " + this.element[front] + " in head index :" + front);
 			front++;
-			return true;
+			return (T) returnValue;
 		}else{
-			System.out.println("Queue UnderFlow...");
-			return false;
+			throw new StackOverflowError("Queue UnderFlow...");
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	boolean peek() {
+	T peek() {
 		if (front <= rear) {
-			System.out.println("Front Element is: " + ArrayQueue.queue[front] + " in index :" + front);
-			return true;
+			System.out.println("Front Element is: " + this.element[front] + " in index :" + front);
+			return (T) this.element[front];
 		}else{
-			System.out.println("Queue UnderFlow...");
-			return false;
+			throw new StackOverflowError("Queue UnderFlow...");
 		}
 	}
+	@Override
+	boolean isEmpty() {
+
+		if (front <= -1 || front >= rear) {
+			return true;
+		}
+
+		return false;
+	}
+
+	@Override
+	boolean isFull() {
+		return rear == MAX_SIZE-1;
+	}
+
 	
 	public static void main(String[] args) {
-		queue = new ArrayQueue[MAX_SIZE];
 		
-		ArrayQueue arrayQueue = new ArrayQueue();
-		for(int i =0 ;i<21; i++){
-			arrayQueue.insert(i*5);
-		}
-		System.out.println(arrayQueue.isEmpty());
-		System.out.println(arrayQueue.isFull());
+		int maxSize = 20;
+		Queue<Integer> queue = new ArrayQueue<Integer>(maxSize);
 		
-		for(int i =0 ;i<21; i++){
-			arrayQueue.remove();
+		for(int i =0 ;i<maxSize; i++){
+			queue.insert(i*5);
 		}
-		System.out.println(arrayQueue.isEmpty());
-		System.out.println(arrayQueue.isFull());
+		System.out.println(queue.isEmpty());
+		System.out.println(queue.isFull());
+		
+		for(int i =0 ;i<maxSize; i++){
+			queue.remove();
+		}
+		System.out.println(queue.isEmpty());
+		System.out.println(queue.isFull());
 	}
 
 }

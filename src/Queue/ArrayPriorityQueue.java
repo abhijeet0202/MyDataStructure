@@ -1,65 +1,81 @@
 package Queue;
 
-public class ArrayPriorityQueue extends Queue{
-	static Queue[] arrayPriorityCircularQueue;
+public class ArrayPriorityQueue<T> extends Queue<T> {
 
 	ArrayPriorityQueue() {
 	}
 
-	ArrayPriorityQueue(int element) {
-		super(element);
+	ArrayPriorityQueue(int maxSize) {
+		super(maxSize);
 	}
 
 	@Override
-	boolean insert(int priority) {
-			return true;
+	void insert(T element) {
+		if (rear == -1){
+			this.element[++rear] = element;
+			front++;
+		}
+		else if(rear+1 == MAX_SIZE){
+			throw new StackOverflowError("Queue OverFlow...");
+		}
+		else{
+			int i =rear;
+			for (; i>=0 ;i--){
+				if (((Integer)this.element[i]) > (Integer)element){
+					this.element[i+1] = this.element[i];
+				}else {
+					break;
+				}
+			}
+			this.element[i+1] =element;
+					rear++;
+			}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	boolean remove() {
-		return false;
-	}
-
-	@Override
-	boolean peek() {
-		return false;
-	}
-	
-	boolean isEmpty() {
+	T remove() {
+		if (front == -1){
+			throw new StackOverflowError("Queue UnderFlow...");
+		}else{
+			Object returnValue = this.element[front];
+			this.element[front] =null;
+			front++;
+			if (front > rear){
+				front =rear =-1;
+			}
+			return (T)returnValue;
+		}
 		
-			return false;
-				
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	T peek() {
+		if (front == -1){
+			throw new StackOverflowError("Queue UnderFlow...");
+		}else{
+			return (T) this.element[front];
+		}
+	}
+
+	boolean isEmpty() {
+
+		return front == -1;
+
+	}
 
 	boolean isFull() {
-		
-		return false;
+
+		return rear == MAX_SIZE;
 	}
+
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		arrayPriorityCircularQueue = new ArrayPriorityQueue[MAX_SIZE];
-
-		ArrayPriorityQueue arrayPriorityQueue = new ArrayPriorityQueue();
-		for (int i = 0; i < 21; i++) {
-			arrayPriorityQueue.insert(i*2);
-		}
-		System.out.println(arrayPriorityQueue.isEmpty());
-		System.out.println(arrayPriorityQueue.isFull());
-
-		for (int i = 0; i < 21; i++) {
-			arrayPriorityQueue.remove();
-		}
-		arrayPriorityQueue.insert(2);
-		arrayPriorityQueue.insert(3);
-		arrayPriorityQueue.insert(4);
-		arrayPriorityQueue.remove();
-		arrayPriorityQueue.remove();
-		arrayPriorityQueue.remove();
-		System.out.println(arrayPriorityQueue.isEmpty());
-		System.out.println(arrayPriorityQueue.isFull());
+		
 	}
 
 }
