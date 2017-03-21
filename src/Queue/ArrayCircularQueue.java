@@ -9,48 +9,48 @@ package Queue;
  */
 public class ArrayCircularQueue<T> extends Queue<T> {
 
-
+	ArrayQueueBean arrayQueueBean = null;
 	ArrayCircularQueue() {
 	}
 
 	ArrayCircularQueue(int maxSize) {
-		super(maxSize);
+		arrayQueueBean = new ArrayQueueBean(maxSize);
 	}
 
 	@Override
 	void insert(T element) {
 
-		if (((rear+1)%MAX_SIZE)== front) {
+		if (((arrayQueueBean.rear+1)%arrayQueueBean.MAX_SIZE)== arrayQueueBean.front) {
 			throw new StackOverflowError("Queue OverFlow...");
 		} else {
-			rear =(rear+1)%MAX_SIZE;
-			this.element[rear] = element;
-			System.out.println("Successfully Inserted Element: " + element + " in head index :" + rear);
-			if (front == -1)
-				front =0;
+			arrayQueueBean.rear =(arrayQueueBean.rear+1)%arrayQueueBean.MAX_SIZE;
+			arrayQueueBean.element[arrayQueueBean.rear] = element;
+			System.out.println("Successfully Inserted Element: " + element + " in head index :" + arrayQueueBean.rear);
+			if (arrayQueueBean.front == -1)
+				arrayQueueBean.front =0;
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	T remove() {
-		if (front == -1 ){
+		if (arrayQueueBean.front == -1 ){
 			throw new StackOverflowError("Queue UnderFlows...");
 		}
 		else {
 			
-			System.out.println("Initaited Removing Element: " + this.element[front]
-					+ " from head index :" + front);
-			Object returnValue = this.element[front];
-			this.element[front] = null;
+			System.out.println("Initaited Removing Element: " + arrayQueueBean.element[arrayQueueBean.front]
+					+ " from head index :" + arrayQueueBean.front);
+			Object returnValue = arrayQueueBean.element[arrayQueueBean.front];
+			arrayQueueBean.element[arrayQueueBean.front] = null;
 			
-			System.out.println("Successfully Removed Element: " + this.element[front]
-					+ " in head index :" + front);
+			System.out.println("Successfully Removed Element: " + arrayQueueBean.element[arrayQueueBean.front]
+					+ " in head index :" + arrayQueueBean.front);
 			
-			if(front == rear)
-				front = rear =-1;
+			if(arrayQueueBean.front == arrayQueueBean.rear)
+				arrayQueueBean.front = arrayQueueBean.rear =-1;
 			else
-				front = (front + 1) % MAX_SIZE;
+				arrayQueueBean.front = (arrayQueueBean.front + 1) % arrayQueueBean.MAX_SIZE;
 			return (T) returnValue;
 		}
 	}
@@ -58,17 +58,17 @@ public class ArrayCircularQueue<T> extends Queue<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	T peek() {
-		if (front == -1 || front != rear) {
+		if (arrayQueueBean.front == -1 || arrayQueueBean.front != arrayQueueBean.rear) {
 			throw new StackOverflowError("Queue UnderFlow...");
 		}else{
-			System.out.println("Front Element is: " + this.element[front] + " in index :" + front);
-			return (T) this.element[front];
+			System.out.println("Front Element is: " + arrayQueueBean.element[arrayQueueBean.front] + " in index :" + arrayQueueBean.front);
+			return (T) arrayQueueBean.element[arrayQueueBean.front];
 		}
 	}
 	
 	@Override
 	boolean isEmpty() {
-		if (rear == -1)
+		if (arrayQueueBean.rear == -1)
 			return true;
 		else
 			return false;
@@ -77,7 +77,7 @@ public class ArrayCircularQueue<T> extends Queue<T> {
 
 	@Override
 	boolean isFull() {
-		if (((rear+1)%MAX_SIZE)== front){
+		if (((arrayQueueBean.rear+1)%arrayQueueBean.MAX_SIZE)== arrayQueueBean.front){
 			return true;
 		}
 		return false;

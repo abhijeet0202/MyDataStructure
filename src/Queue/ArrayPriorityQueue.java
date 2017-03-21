@@ -2,47 +2,48 @@ package Queue;
 
 public class ArrayPriorityQueue<T> extends Queue<T> {
 
+	ArrayQueueBean arrayQueueBean = null;
 	ArrayPriorityQueue() {
 	}
 
 	ArrayPriorityQueue(int maxSize) {
-		super(maxSize);
+		arrayQueueBean = new ArrayQueueBean(maxSize);
 	}
 
 	@Override
 	void insert(T element) {
-		if (rear == -1){
-			this.element[++rear] = element;
-			front++;
+		if (arrayQueueBean.rear == -1){
+			arrayQueueBean.element[++arrayQueueBean.rear] = element;
+			arrayQueueBean.front++;
 		}
-		else if(rear+1 == MAX_SIZE){
+		else if(arrayQueueBean.rear+1 == arrayQueueBean.MAX_SIZE){
 			throw new StackOverflowError("Queue OverFlow...");
 		}
 		else{
-			int i =rear;
+			int i =arrayQueueBean.rear;
 			for (; i>=0 ;i--){
-				if (((Integer)this.element[i]) > (Integer)element){
-					this.element[i+1] = this.element[i];
+				if (((Integer)arrayQueueBean.element[i]) > (Integer)element){
+					arrayQueueBean.element[i+1] = arrayQueueBean.element[i];
 				}else {
 					break;
 				}
 			}
-			this.element[i+1] =element;
-					rear++;
+			arrayQueueBean.element[i+1] =element;
+			arrayQueueBean.rear++;
 			}
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	T remove() {
-		if (front == -1){
+		if (arrayQueueBean.front == -1){
 			throw new StackOverflowError("Queue UnderFlow...");
 		}else{
-			Object returnValue = this.element[front];
-			this.element[front] =null;
-			front++;
-			if (front > rear){
-				front =rear =-1;
+			Object returnValue = arrayQueueBean.element[arrayQueueBean.front];
+			arrayQueueBean.element[arrayQueueBean.front] =null;
+			arrayQueueBean.front++;
+			if (arrayQueueBean.front > arrayQueueBean.rear){
+				arrayQueueBean.front =arrayQueueBean.rear =-1;
 			}
 			return (T)returnValue;
 		}
@@ -52,22 +53,22 @@ public class ArrayPriorityQueue<T> extends Queue<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	T peek() {
-		if (front == -1){
+		if (arrayQueueBean.front == -1){
 			throw new StackOverflowError("Queue UnderFlow...");
 		}else{
-			return (T) this.element[front];
+			return (T) arrayQueueBean.element[arrayQueueBean.front];
 		}
 	}
 
 	boolean isEmpty() {
 
-		return front == -1;
+		return arrayQueueBean.front == -1;
 
 	}
 
 	boolean isFull() {
 
-		return rear == MAX_SIZE;
+		return arrayQueueBean.rear == arrayQueueBean.MAX_SIZE;
 	}
 
 	

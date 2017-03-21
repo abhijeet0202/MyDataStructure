@@ -37,8 +37,6 @@ public class SinglyLinkList {
 		scan = new Scanner(System.in);
 		System.out.println("Enter an Integer Number");
 		int iData = scan.nextInt();
-		System.out.println("Enter an Double Number");
-		double dData = scan .nextDouble();
 		SinglyLinkBean node = new SinglyLinkBean(iData);
 		
 		

@@ -31,10 +31,10 @@ public class TestArrayDeQueue {
 		ArrayDeQueue<Integer> arrayDeQueue = new ArrayDeQueue<Integer>(maxSize);
 		arrayDeQueue.insertFront(21);
 		arrayDeQueue.insertRear(20);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 1);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 20);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 1);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 20);
 	}
 	
 	/*
@@ -49,23 +49,23 @@ public class TestArrayDeQueue {
 		int maxSize =20;
 		ArrayDeQueue<Integer> arrayDeQueue = new ArrayDeQueue<Integer>(maxSize);
 		arrayDeQueue.insert(21);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 0);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
 		
 		
 		arrayDeQueue.remove();
-		assertEquals(arrayDeQueue.front, -1);
-		assertEquals(arrayDeQueue.rear, -1);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, -1);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, -1);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
 		
 		arrayDeQueue.insertRear(20);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 0);
-		assertEquals(arrayDeQueue.element[0], 20);
-		assertEquals(arrayDeQueue.element[0], 20);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 20);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 20);
 	}
 
 
@@ -81,23 +81,23 @@ public class TestArrayDeQueue {
 		int maxSize =20;
 		ArrayDeQueue<Integer> arrayDeQueue = new ArrayDeQueue<Integer>(maxSize);
 		arrayDeQueue.insertRear(21);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 0);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
 		
 		
 		arrayDeQueue.remove();
-		assertEquals(arrayDeQueue.front, -1);
-		assertEquals(arrayDeQueue.rear, -1);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, -1);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, -1);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
 		
 		arrayDeQueue.insertFront(20);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 0);
-		assertEquals(arrayDeQueue.element[0], 20);
-		assertEquals(arrayDeQueue.element[0], 20);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 20);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 20);
 	}
 
 	/*
@@ -112,23 +112,23 @@ public class TestArrayDeQueue {
 		int maxSize =20;
 		ArrayDeQueue<Integer> arrayDeQueue = new ArrayDeQueue<Integer>(maxSize);
 		arrayDeQueue.insert(21);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 0);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
 		
 		
 		arrayDeQueue.removeRear();
-		assertEquals(arrayDeQueue.front, -1);
-		assertEquals(arrayDeQueue.rear, -1);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, -1);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, -1);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
 		
 		arrayDeQueue.insertRear(20);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 0);
-		assertEquals(arrayDeQueue.element[0], 20);
-		assertEquals(arrayDeQueue.element[0], 20);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 20);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 20);
 	}
 
 	/*
@@ -143,23 +143,23 @@ public class TestArrayDeQueue {
 		int maxSize =20;
 		ArrayDeQueue<Integer> arrayDeQueue = new ArrayDeQueue<Integer>(maxSize);
 		arrayDeQueue.insertRear(21);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 0);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
 		
 		
 		arrayDeQueue.removeRear();
-		assertEquals(arrayDeQueue.front, -1);
-		assertEquals(arrayDeQueue.rear, -1);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, -1);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, -1);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
 		
 		arrayDeQueue.insert(20);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 0);
-		assertEquals(arrayDeQueue.element[0], 20);
-		assertEquals(arrayDeQueue.element[0], 20);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 20);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 20);
 	}
 
 	/*
@@ -193,31 +193,31 @@ public class TestArrayDeQueue {
 		int maxSize =20;
 		ArrayDeQueue<Integer> arrayDeQueue = new ArrayDeQueue<Integer>(maxSize);
 		arrayDeQueue.insertRear(21);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 0);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
 		
 		
 		arrayDeQueue.insertRear(23);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 1);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 1);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
 		
 		arrayDeQueue.insertRear(20);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 2);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 20);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 2);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 20);
 		
 		arrayDeQueue.removeFront();
-		assertEquals(arrayDeQueue.front, 1);
-		assertEquals(arrayDeQueue.rear, 2);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 20);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 1);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 2);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 20);
 	}
 
 	/*
@@ -230,38 +230,38 @@ public class TestArrayDeQueue {
 		int maxSize =20;
 		ArrayDeQueue<Integer> arrayDeQueue = new ArrayDeQueue<Integer>(maxSize);
 		arrayDeQueue.insertRear(21);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 0);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
 		
 		
 		arrayDeQueue.insertRear(23);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 1);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 1);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
 		
 		arrayDeQueue.insertRear(20);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 2);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 20);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 2);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 20);
 		
 		arrayDeQueue.removeFront();
-		assertEquals(arrayDeQueue.front, 1);
-		assertEquals(arrayDeQueue.rear, 2);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 20);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 1);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 2);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 20);
 		
 		arrayDeQueue.removeRear();
-		assertEquals(arrayDeQueue.front, 1);
-		assertEquals(arrayDeQueue.rear, 1);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 1);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 1);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], null);
 	}
 
 	/*
@@ -272,17 +272,17 @@ public class TestArrayDeQueue {
 		int maxSize =2;
 		ArrayDeQueue<Integer> arrayDeQueue = new ArrayDeQueue<Integer>(maxSize);
 		arrayDeQueue.insertRear(21);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 0);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
 		
 		
 		arrayDeQueue.insertRear(23);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 1);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 1);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
 		
 		arrayDeQueue.insertRear(20);
 	}
@@ -295,95 +295,95 @@ public class TestArrayDeQueue {
 		int maxSize =6;
 		ArrayDeQueue<Integer> arrayDeQueue = new ArrayDeQueue<Integer>(maxSize);
 		arrayDeQueue.insertRear(21);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 0);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
 		
 		
 		arrayDeQueue.insertRear(23);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 1);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 1);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
 		
 		arrayDeQueue.insertRear(24);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 2);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 24);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 2);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 24);
 		
 		arrayDeQueue.insertRear(25);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 3);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 24);
-		assertEquals(arrayDeQueue.element[3], 25);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 3);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 24);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 25);
 		
 		arrayDeQueue.insertRear(26);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 24);
-		assertEquals(arrayDeQueue.element[3], 25);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 24);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 25);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.removeFront();
-		assertEquals(arrayDeQueue.front, 1);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 24);
-		assertEquals(arrayDeQueue.element[3], 25);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 1);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 24);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 25);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.removeFront();
-		assertEquals(arrayDeQueue.front, 2);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], null);
-		assertEquals(arrayDeQueue.element[2], 24);
-		assertEquals(arrayDeQueue.element[3], 25);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 2);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 24);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 25);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.removeFront();
-		assertEquals(arrayDeQueue.front, 3);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], null);
-		assertEquals(arrayDeQueue.element[2], null);
-		assertEquals(arrayDeQueue.element[3], 25);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 3);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 25);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.removeFront();
-		assertEquals(arrayDeQueue.front, 4);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], null);
-		assertEquals(arrayDeQueue.element[2], null);
-		assertEquals(arrayDeQueue.element[3], null);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.insertFront(100);
-		assertEquals(arrayDeQueue.front, 3);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], null);
-		assertEquals(arrayDeQueue.element[2], null);
-		assertEquals(arrayDeQueue.element[3], 100);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 3);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 100);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.insertFront(101);
-		assertEquals(arrayDeQueue.front, 2);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], null);
-		assertEquals(arrayDeQueue.element[2], 101);
-		assertEquals(arrayDeQueue.element[3], 100);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 2);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 101);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 100);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 	}
 
@@ -392,86 +392,86 @@ public class TestArrayDeQueue {
 		int maxSize =6;
 		ArrayDeQueue<Integer> arrayDeQueue = new ArrayDeQueue<Integer>(maxSize);
 		arrayDeQueue.insertRear(21);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 0);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
 		
 		
 		arrayDeQueue.insertRear(23);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 1);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 1);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
 		
 		arrayDeQueue.insertRear(24);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 2);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 24);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 2);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 24);
 		
 		arrayDeQueue.insertRear(25);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 3);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 24);
-		assertEquals(arrayDeQueue.element[3], 25);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 3);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 24);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 25);
 		
 		arrayDeQueue.insertRear(26);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 24);
-		assertEquals(arrayDeQueue.element[3], 25);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 24);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 25);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.removeFront();
-		assertEquals(arrayDeQueue.front, 1);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 24);
-		assertEquals(arrayDeQueue.element[3], 25);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 1);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 24);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 25);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.removeFront();
-		assertEquals(arrayDeQueue.front, 2);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], null);
-		assertEquals(arrayDeQueue.element[2], 24);
-		assertEquals(arrayDeQueue.element[3], 25);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 2);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 24);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 25);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.removeFront();
-		assertEquals(arrayDeQueue.front, 3);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], null);
-		assertEquals(arrayDeQueue.element[2], null);
-		assertEquals(arrayDeQueue.element[3], 25);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 3);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 25);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.removeFront();
-		assertEquals(arrayDeQueue.front, 4);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], null);
-		assertEquals(arrayDeQueue.element[2], null);
-		assertEquals(arrayDeQueue.element[3], null);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.removeRear();
-		assertEquals(arrayDeQueue.front, -1);
-		assertEquals(arrayDeQueue.rear, -1);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], null);
-		assertEquals(arrayDeQueue.element[2], null);
-		assertEquals(arrayDeQueue.element[3], null);
-		assertEquals(arrayDeQueue.element[4], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, -1);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, -1);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], null);
 		
 	}
 
@@ -480,86 +480,86 @@ public class TestArrayDeQueue {
 		int maxSize =6;
 		ArrayDeQueue<Integer> arrayDeQueue = new ArrayDeQueue<Integer>(maxSize);
 		arrayDeQueue.insertRear(21);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 0);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
 		
 		
 		arrayDeQueue.insertRear(23);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 1);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 1);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
 		
 		arrayDeQueue.insertRear(24);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 2);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 24);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 2);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 24);
 		
 		arrayDeQueue.insertRear(25);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 3);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 24);
-		assertEquals(arrayDeQueue.element[3], 25);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 3);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 24);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 25);
 		
 		arrayDeQueue.insertRear(26);
-		assertEquals(arrayDeQueue.front, 0);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], 21);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 24);
-		assertEquals(arrayDeQueue.element[3], 25);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 0);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], 21);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 24);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 25);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.removeFront();
-		assertEquals(arrayDeQueue.front, 1);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], 23);
-		assertEquals(arrayDeQueue.element[2], 24);
-		assertEquals(arrayDeQueue.element[3], 25);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 1);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], 23);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 24);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 25);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.removeFront();
-		assertEquals(arrayDeQueue.front, 2);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], null);
-		assertEquals(arrayDeQueue.element[2], 24);
-		assertEquals(arrayDeQueue.element[3], 25);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 2);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], 24);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 25);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.removeFront();
-		assertEquals(arrayDeQueue.front, 3);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], null);
-		assertEquals(arrayDeQueue.element[2], null);
-		assertEquals(arrayDeQueue.element[3], 25);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 3);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], 25);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.removeFront();
-		assertEquals(arrayDeQueue.front, 4);
-		assertEquals(arrayDeQueue.rear, 4);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], null);
-		assertEquals(arrayDeQueue.element[2], null);
-		assertEquals(arrayDeQueue.element[3], null);
-		assertEquals(arrayDeQueue.element[4], 26);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, 4);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], 26);
 		
 		arrayDeQueue.removeFront();
-		assertEquals(arrayDeQueue.front, -1);
-		assertEquals(arrayDeQueue.rear, -1);
-		assertEquals(arrayDeQueue.element[0], null);
-		assertEquals(arrayDeQueue.element[1], null);
-		assertEquals(arrayDeQueue.element[2], null);
-		assertEquals(arrayDeQueue.element[3], null);
-		assertEquals(arrayDeQueue.element[4], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.front, -1);
+		assertEquals(arrayDeQueue.arrayQueueBean.rear, -1);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[0], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[1], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[2], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[3], null);
+		assertEquals(arrayDeQueue.arrayQueueBean.element[4], null);
 		
 	}
 

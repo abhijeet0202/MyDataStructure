@@ -2,18 +2,21 @@ package Queue;
 
 public class ArrayQueue<T> extends Queue<T> {
 	
+	ArrayQueueBean arrayQueueBean = null;
+	
 	ArrayQueue(){}
+	
 	ArrayQueue(int maxSize){
-		super(maxSize);
+		arrayQueueBean = new ArrayQueueBean(maxSize);
 	}
 	
 	@Override
 	void insert(T element) {
-		if (rear < MAX_SIZE-1) {
-			if(rear == -1)
-				++front;
-			this.element[++rear] = element;
-			System.out.println("Successfully Inserted Element: " + element + " in head index :" + rear);
+		if (arrayQueueBean.rear < arrayQueueBean.MAX_SIZE-1) {
+			if(arrayQueueBean.rear == -1)
+				++arrayQueueBean.front;
+			arrayQueueBean.element[++arrayQueueBean.rear] = element;
+			System.out.println("Successfully Inserted Element: " + element + " in head index :" + arrayQueueBean.rear);
 		}else{
 			throw new StackOverflowError("Queue OverFlow...");
 		}
@@ -22,12 +25,12 @@ public class ArrayQueue<T> extends Queue<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	T remove() {
-		if (front >= 0 && front <= rear) {
-			System.out.println("Initaited Removing Element: " + this.element[front] + " from head index :" + front);
-			Object returnValue = this.element[front];
-			this.element[front] = null;
-			System.out.println("Successfully Removed Element: " + this.element[front] + " in head index :" + front);
-			front++;
+		if (arrayQueueBean.front >= 0 && arrayQueueBean.front <= arrayQueueBean.rear) {
+			System.out.println("Initaited Removing Element: " + arrayQueueBean.element[arrayQueueBean.front] + " from head index :" + arrayQueueBean.front);
+			Object returnValue = arrayQueueBean.element[arrayQueueBean.front];
+			arrayQueueBean.element[arrayQueueBean.front] = null;
+			System.out.println("Successfully Removed Element: " + arrayQueueBean.element[arrayQueueBean.front] + " in head index :" + arrayQueueBean.front);
+			arrayQueueBean.front++;
 			return (T) returnValue;
 		}else{
 			throw new StackOverflowError("Queue UnderFlow...");
@@ -37,9 +40,9 @@ public class ArrayQueue<T> extends Queue<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	T peek() {
-		if (front <= rear) {
-			System.out.println("Front Element is: " + this.element[front] + " in index :" + front);
-			return (T) this.element[front];
+		if (arrayQueueBean.front <= arrayQueueBean.rear) {
+			System.out.println("Front Element is: " + arrayQueueBean.element[arrayQueueBean.front] + " in index :" + arrayQueueBean.front);
+			return (T) arrayQueueBean.element[arrayQueueBean.front];
 		}else{
 			throw new StackOverflowError("Queue UnderFlow...");
 		}
@@ -47,7 +50,7 @@ public class ArrayQueue<T> extends Queue<T> {
 	@Override
 	boolean isEmpty() {
 
-		if (front <= -1 || front >= rear) {
+		if (arrayQueueBean.front <= -1 || arrayQueueBean.front >= arrayQueueBean.rear) {
 			return true;
 		}
 
@@ -56,7 +59,7 @@ public class ArrayQueue<T> extends Queue<T> {
 
 	@Override
 	boolean isFull() {
-		return rear == MAX_SIZE-1;
+		return arrayQueueBean.rear == arrayQueueBean.MAX_SIZE-1;
 	}
 
 	

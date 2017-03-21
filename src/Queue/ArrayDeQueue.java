@@ -1,11 +1,11 @@
 package Queue;
 
 public class ArrayDeQueue<T> extends Queue<T>{
-	
+	ArrayQueueBean arrayQueueBean = null;
 	public ArrayDeQueue() {	}
 	
 	public ArrayDeQueue(int maxSize){
-		super(maxSize);
+		arrayQueueBean = new ArrayQueueBean(maxSize);
 	}
 	
 	@Override
@@ -14,27 +14,27 @@ public class ArrayDeQueue<T> extends Queue<T>{
 	}
 	
 	void insertRear(T element){
-		if ((rear+1) == MAX_SIZE){
+		if ((arrayQueueBean.rear+1) == arrayQueueBean.MAX_SIZE){
 			throw new StackOverflowError("Queue OverFlow...");
 		} else {
-			this.element[++rear] = element;
-			System.out.println("Successfully Inserted Element: " + element + " in head index :" + rear);
-			if (front == -1)
-				front =0;
+			arrayQueueBean.element[++arrayQueueBean.rear] = element;
+			System.out.println("Successfully Inserted Element: " + element + " in head index :" + arrayQueueBean.rear);
+			if (arrayQueueBean.front == -1)
+				arrayQueueBean.front =0;
 		}
 	}
 	
 	void insertFront(T element){
-		if (front == -1){
-			this.element[++front] = element;
-			++rear;
-			System.out.println("Successfully Inserted Element: " + element + " in head index :" + front);
+		if (arrayQueueBean.front == -1){
+			arrayQueueBean.element[++arrayQueueBean.front] = element;
+			++arrayQueueBean.rear;
+			System.out.println("Successfully Inserted Element: " + element + " in head index :" + arrayQueueBean.front);
 		}
-		else if ((front -1) == -1){
+		else if ((arrayQueueBean.front -1) == -1){
 			throw new StackOverflowError("Queue OverFlow...");
 		} else{
-			this.element[--front] = element;
-			System.out.println("Successfully Inserted Element: " + element + " in head index :" + front);
+			arrayQueueBean.element[--arrayQueueBean.front] = element;
+			System.out.println("Successfully Inserted Element: " + element + " in head index :" + arrayQueueBean.front);
 		}
 	}
 
@@ -45,29 +45,29 @@ public class ArrayDeQueue<T> extends Queue<T>{
 	
 	@SuppressWarnings("unchecked")
 	T removeFront(){
-		if (front == -1){
+		if (arrayQueueBean.front == -1){
 			throw new StackOverflowError("Queue Underflow..");
 		} else {
-			Object returnValue = this.element[front];
-			this.element[front] = null;
-			if (front == rear )
-				rear = front =-1;
-			if (front < rear)
-				front++;
+			Object returnValue = arrayQueueBean.element[arrayQueueBean.front];
+			arrayQueueBean.element[arrayQueueBean.front] = null;
+			if (arrayQueueBean.front == arrayQueueBean.rear )
+				arrayQueueBean.rear = arrayQueueBean.front =-1;
+			if (arrayQueueBean.front < arrayQueueBean.rear)
+				arrayQueueBean.front++;
 			return (T) returnValue;
 		}
 	}
 	
 	@SuppressWarnings("unchecked")
 	T removeRear(){
-		if (rear == -1){
+		if (arrayQueueBean.rear == -1){
 			throw new StackOverflowError("Queue Underflow..");
 		} else {
-			Object returnValue = this.element[rear];
-			this.element[rear] = null;
-			rear--;
-			if (rear == -1 || rear < front)
-				rear = front =-1;
+			Object returnValue = arrayQueueBean.element[arrayQueueBean.rear];
+			arrayQueueBean.element[arrayQueueBean.rear] = null;
+			arrayQueueBean.rear--;
+			if (arrayQueueBean.rear == -1 || arrayQueueBean.rear < arrayQueueBean.front)
+				arrayQueueBean.rear = arrayQueueBean.front =-1;
 			return (T) returnValue;
 		}
 	}
@@ -79,31 +79,31 @@ public class ArrayDeQueue<T> extends Queue<T>{
 	
 	@SuppressWarnings("unchecked")
 	T peekLeft(){
-		if (front == -1){
+		if (arrayQueueBean.front == -1){
 			throw new StackOverflowError("Queue Underflow..");
 		} else {
-			System.out.println("Front Element is: " + this.element[front] + " in index :" + front);
-			return (T) this.element[front];
+			System.out.println("Front Element is: " + arrayQueueBean.element[arrayQueueBean.front] + " in index :" + arrayQueueBean.front);
+			return (T) arrayQueueBean.element[arrayQueueBean.front];
 		}
 	}
 	
 	@SuppressWarnings("unchecked")
 	T peekRight(){
-		if (rear == -1){
+		if (arrayQueueBean.rear == -1){
 			throw new StackOverflowError("Queue Underflow..");
 		} else {
-			System.out.println("Front Element is: " + this.element[rear] + " in index :" + rear);
-			return (T) this.element[rear];
+			System.out.println("Front Element is: " + arrayQueueBean.element[arrayQueueBean.rear] + " in index :" + arrayQueueBean.rear);
+			return (T) arrayQueueBean.element[arrayQueueBean.rear];
 		}
 	}
 	
 	@Override
 	boolean isEmpty(){
-		return front == -1;
+		return arrayQueueBean.front == -1;
 	}
 	
 	@Override
 	boolean isFull(){
-		return rear == MAX_SIZE;
+		return arrayQueueBean.rear == arrayQueueBean.MAX_SIZE;
 	}
 }
