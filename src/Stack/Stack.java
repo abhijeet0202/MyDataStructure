@@ -9,44 +9,18 @@ package Stack;
  */
 abstract class Stack<T> {
 
-	protected int top = -1;
-	protected int MAX_SIZE;
-	protected final Object[] element;
-	
-	public Stack() {
-		MAX_SIZE = 20;
-		this.element = new Object[MAX_SIZE];
-	}
-	
-	public Stack(int maxSize) {
-		this.element = new Object[maxSize];
-		MAX_SIZE = maxSize;
-	}
-
 	abstract void push(T stack);
 
 	abstract T pop();
 
-	abstract T peek();
+	abstract T top();
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	
-	boolean isEmpty(){
-		return top == -1;
-	}
+	abstract boolean isEmpty();
 	
-	boolean isFull(){
-		return top == MAX_SIZE;
-	}
+	abstract boolean isFull();
 	
-	public int getTop(){
-		return top;
-	}
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Stack [element=").append(element).append("]");
-		return builder.toString();
-	}
+	
 }

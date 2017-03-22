@@ -38,7 +38,7 @@ public class InfixToPostFix extends ArrayStack<Character> {
 		String str = scanner.nextLine();
 		System.out.println(str.length());
 
-		Stack<Character> infixToPostfix = new ArrayStack<Character>(str.length());
+		ArrayStack<Character> infixToPostfix = new ArrayStack<Character>(str.length());
 		for (int i = 0; i < str.length(); i++) {
 			switch (str.charAt(i)) {
 			case '(':
@@ -56,7 +56,7 @@ public class InfixToPostFix extends ArrayStack<Character> {
 			case '+':
 			case '-':
 			case '*':
-			case '/':{
+			case '/': {
 				if (infixToPostfix.isEmpty()) {
 					infixToPostfix.push(str.charAt(i));
 				} else {
@@ -72,7 +72,7 @@ public class InfixToPostFix extends ArrayStack<Character> {
 								break;
 							} else {
 								infixToPostfix.push(opThis);
-								
+
 							}
 						}
 					}
@@ -82,17 +82,16 @@ public class InfixToPostFix extends ArrayStack<Character> {
 			default:
 				System.out.print(str.charAt(i));
 			}
-			
+
 		}
-		
-		
-		//Print all remains
-		for (int i= infixToPostfix.top ;i >=0  ; i--){
+
+		// Print all remains
+		for (int i = infixToPostfix.arrayStackBean.top; i >= 0; i--) {
 			System.out.print(infixToPostfix.pop());
 		}
+		scanner.close();
 	}
 
-	
 	static boolean checkPrecedence(char ch_opThis, char ch_opTop, Stack<Character> infixToPostfix) {
 
 		Precedence opTop = null;

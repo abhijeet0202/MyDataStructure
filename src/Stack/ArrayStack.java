@@ -9,20 +9,20 @@ package Stack;
  */
 public class ArrayStack<T> extends Stack<T> {
 
+	public ArrayStackBean arrayStackBean = null;
 	public ArrayStack() {
-		this(20);
+		arrayStackBean = new ArrayStackBean(20);
 	}
 	
 	public ArrayStack(int maxSize){
-		super(maxSize);
-		this.MAX_SIZE = maxSize -1;
+		arrayStackBean = new ArrayStackBean(maxSize);
 		
 	}
 	
 	@Override
 	public void push(T element) {
-		if (top < MAX_SIZE) {
-			this.element[++top] = element;
+		if (arrayStackBean.top < arrayStackBean.MAX_SIZE) {
+			arrayStackBean.element[++arrayStackBean.top] = element;
 			//System.out.println("Successfully Inserted Element: " + element + " in head index :" + top);
 		} else {
 			throw new StackOverflowError("StackOver Flow");
@@ -32,12 +32,12 @@ public class ArrayStack<T> extends Stack<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public T pop() {
-		if (top > -1) {
+		if (arrayStackBean.top > -1) {
 			//System.out.println("Initaited Removing Element: " + element[top] + " in head index :" + top);
-			Object returnValue = element[top];
-			element[top] = null;
+			Object returnValue = arrayStackBean.element[arrayStackBean.top];
+			arrayStackBean.element[arrayStackBean.top] = null;
 			//System.out.println("Successfully Removed Element: " + element[top] + " in head index :" + top);
-			top--;
+			arrayStackBean.top--;
 			return (T) returnValue;
 		} else {
 			throw new StackOverflowError("Stack UnderFlow...");
@@ -46,11 +46,11 @@ public class ArrayStack<T> extends Stack<T> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public T peek() {
-		if (top > -1) {
+	public T top() {
+		if (arrayStackBean.top > -1) {
 			System.out
-					.println("Element in Head is : " + element[top] + " and current head index is :" + top);
-			return (T)element[top];
+					.println("Element in Head is : " + arrayStackBean.element[arrayStackBean.top] + " and current head index is :" + arrayStackBean.top);
+			return (T)arrayStackBean.element[arrayStackBean.top];
 		} else {
 			throw new StackOverflowError("Stack UnderFlow...");
 		}
@@ -67,12 +67,22 @@ public class ArrayStack<T> extends Stack<T> {
 				
 		for (int i = 0 ; i <20;i++){
 			stackService.push(i+11);
-			stackService.peek();
+			stackService.top();
 		}
 		
 		for (int i = 0 ; i <20;i++)
 			stackService.pop();
 
+	}
+
+	@Override
+	boolean isEmpty() {
+		return (arrayStackBean.top == 0);
+	}
+
+	@Override
+	boolean isFull() {
+		return (arrayStackBean.top == arrayStackBean.MAX_SIZE);
 	}
 
 }

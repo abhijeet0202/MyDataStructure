@@ -1,20 +1,10 @@
 package Stack;
 
-import java.util.Scanner;
+public class LinkedListStack<T> extends Stack<T>{
 
-import LinkedList.SinglyLinkBean;
-
-public class LinkedListStack{
-
-	private SinglyLinkBean first;
-	private Scanner scan;
+	private ListStackBean<T> first;
 	
 	
-	public static void main(String[] args) {
-		LinkedListStack linkedListStack = new LinkedListStack();
-	}
-
-
 	/*
 	 * ******************************************************
 	 * INSERT FIRST || PUSH
@@ -24,13 +14,10 @@ public class LinkedListStack{
 	 * 2. Now, above is done Both "first" and "node.next" contains same value(null || reference of any node)
 	 * 3. Now, Copy the "node" itself address to "first", so that "first", starts pointing to newly created node. 
 	 */
-	void push(){
+	@Override
+	void push(T element){
 		/*Ask User for input data */
-		scan = new Scanner(System.in);
-		System.out.println("Enter an Integer Number");
-		int iData = scan.nextInt();
-		SinglyLinkBean node = new SinglyLinkBean(iData);
-		
+		ListStackBean<T> node = new ListStackBean<T>(element);	
 		
 		node.next = first;
 		first = node;
@@ -46,14 +33,16 @@ public class LinkedListStack{
 	 * 	  if We want to return the deleted node to show or print then copy the "first" in temporary.
 	 *    Otherwise not required, once GC will start it will clean up that deleted node (or unused node) 
 	 */
-	SinglyLinkBean pop(){
-		SinglyLinkBean temp = first;
+	@SuppressWarnings("unchecked")
+	@Override
+	T pop(){
+		ListStackBean<T> temp = first;
 		
 		if(!isEmpty())
 			first = first.next;
 		else
 			System.out.println("No Node Exist");
-		return temp;
+		return (T)temp;
 	}
 
 	/*
@@ -62,9 +51,11 @@ public class LinkedListStack{
 	 * ****************************************************** 
 	 * 1. return the first node. But, Before doing this, check whether list should not be empty
 	 */
-	SinglyLinkBean peek() {
+	@SuppressWarnings("unchecked")
+	@Override
+	T top() {
 		if (!isEmpty()){
-			return first;
+			return (T) first;
 		}
 		return null;
 	}
@@ -73,8 +64,14 @@ public class LinkedListStack{
 	 * Check if object who invoked isEmpty() contains any list or it 
 	 * is empty, Return True if Empty else False
 	 */
+	@Override
 	boolean isEmpty(){
 		return (first == null);
+	}
+	
+	@Override
+	boolean isFull() {
+		return false;
 	}
 
 }

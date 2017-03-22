@@ -22,7 +22,7 @@ public class BracketCheck extends ArrayStack<Character> {
 		String str = scanner.nextLine();
 		System.out.println(str.length());
 		
-		Stack<Character> bracketCheck = new ArrayStack<Character>(str.length());
+		ArrayStack<Character> bracketCheck = new ArrayStack<Character>(str.length());
 		for(int i =0;i < str.length(); i++){
 			char ch = str.charAt(i);
 			System.out.print(ch);
@@ -52,7 +52,7 @@ public class BracketCheck extends ArrayStack<Character> {
 		}
 		if(!bracketCheck.isEmpty()){
 			System.out.print("Error: "+bracketCheck.pop()+" at :");
-			System.out.print(bracketCheck.top+1);
+			System.out.print(bracketCheck.arrayStackBean.top+1);
 		}
 		scanner.close();
 	}
