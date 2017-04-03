@@ -1,11 +1,8 @@
 package LinkedList;
 
-import java.util.Scanner;
-
-public class DoubleEndedSinglyList {
-	private SinglyLinkBean first;
-	private SinglyLinkBean last;
-	private Scanner scan;
+public class DoubleEndedSinglyList<T> {
+	private SinglyLinkBean<T> first;
+	private SinglyLinkBean<T> last;
 	
 	/*
 	 * Check if object who invoked isEmpty() contains any list or it 
@@ -25,14 +22,9 @@ public class DoubleEndedSinglyList {
 	 * 3. Now, above is done Both "first" and "node.next" contains same value(null || reference of any node)
 	 * 4. Now, Copy the "node" itself address to "first", so that "first", starts pointing to newly created node. 
 	 */
-	public void insertFirst(){
-		/*Ask User for input data */
-		scan = new Scanner(System.in);
-		System.out.println("Enter an Integer Number");
-		int iData = scan.nextInt();
-		System.out.println("Enter an Double Number");
-		double dData = scan .nextDouble();
-		SinglyLinkBean node = new SinglyLinkBean(iData);
+	public void insertFirst(T element){
+		
+		SinglyLinkBean<T> node = new SinglyLinkBean<T>(element);
 		
 		if(isEmpty())
 			last = node;
@@ -48,14 +40,9 @@ public class DoubleEndedSinglyList {
 	 * 1. First Step will be to check first is null or not, if its null then copy newly constructed node reference in first and last both
 	 * 2. if list was not empty, then simply copy reference of newly node on both "last" as well as "last.next"
 	 */
-	public void insertLast(){
-		/*Ask User for input data */
-		scan = new Scanner(System.in);
-		System.out.println("Enter an Integer Number");
-		int iData = scan.nextInt();
-		System.out.println("Enter an Double Number");
-		double dData = scan .nextDouble();
-		SinglyLinkBean node = new SinglyLinkBean(iData);
+	public void insertLast(T element){
+		
+		SinglyLinkBean<T> node = new SinglyLinkBean<T>(element);
 		
 		if( isEmpty())
 			first = node;
@@ -81,8 +68,8 @@ public class DoubleEndedSinglyList {
 	 * 	  if We want to return the deleted node to show or print then copy the "first" in temporary.
 	 *    Otherwise not required, once GC will start it will clean up that deleted node (or unused node) 
 	 */
-	public SinglyLinkBean deleteFirst(){
-		SinglyLinkBean temp = first;
+	public SinglyLinkBean<T> deleteFirst(){
+		SinglyLinkBean<T> temp = first;
 		
 		if(!isEmpty()){ 
 			first = first.next;
@@ -92,17 +79,45 @@ public class DoubleEndedSinglyList {
 		}
 		else
 			System.out.println("No Node Exist");
-		return temp;
+		return (SinglyLinkBean<T>)temp;
 	}
 	
 	/*
 	 * ******************************************************
 	 * DELETE LAST
 	 * ****************************************************** 
-	 * TODO : Need iterator to go to previus to copy
+	 * 1 : To delete the last node we need to iterate till second last node, 
+	 * 	   which keeps last node address.
+	 * 2.: In case only single node present in list, which means first and last
+	 * 	   both pointing to same node, In this case make both "first" and "last" null.
+	 * 3 : Otherwise, make the current's next (second last node's pointing to last node) null.
+	 * 	   and then assign the "current" address to "last"
+	 * 
+	 * * Optional:
+	 * 	  if We want to return the deleted node to show or print then copy the "first" in temporary.
+	 *    Otherwise not required, once GC will start it will clean up that deleted node (or unused node) 
 	 */
-	SinglyLinkBean deleteLast(){
-		return null;
+	
+	SinglyLinkBean<T> deleteLast() {
+		SinglyLinkBean<T> current = (SinglyLinkBean<T>) first;
+
+		if (!isEmpty()) {
+			while (current.next != null) {
+				//previous = current;
+				current = current.next;
+			}
+		} else
+			System.out.println("No Node Exist");
+
+		//Means only 1 node left make both first and last null
+		if (current == first){
+			first =  null;
+			last = null;
+		} else {
+			current.next = null;
+			last = current;
+		}
+		return (SinglyLinkBean<T>) current;
 	}
 	/*
 	 * ******************************************************
@@ -114,25 +129,10 @@ public class DoubleEndedSinglyList {
 	 * 		Increment the "current" with "current.next"  
 	 */
 	public void displayList(){
-		SinglyLinkBean current = first;
+		SinglyLinkBean<T> current = first;
 		while (current != null){
 			current.display();
 			current = current.next;
 		}
 	}
-	public static void main(String[] args) {
-		DoubleEndedSinglyList doubleEndedSinglyList = new DoubleEndedSinglyList();
-		doubleEndedSinglyList.deleteFirst();
-		doubleEndedSinglyList.insertLast();
-		doubleEndedSinglyList.displayList();
-		doubleEndedSinglyList.deleteFirst();
-		System.out.println("=============================");
-		doubleEndedSinglyList.displayList();
-		System.out.println("=============================");
-		doubleEndedSinglyList.insertLast();
-		doubleEndedSinglyList.insertLast();
-		doubleEndedSinglyList.deleteFirst();
-		doubleEndedSinglyList.displayList();
-	}
-
 }

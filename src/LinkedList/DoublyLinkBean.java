@@ -1,12 +1,12 @@
 package LinkedList;
 
-public class DoublyLinkBean {
+public class DoublyLinkBean<T> {
 	
-	public DoublyLinkBean next;
-	public int iData;
-	public DoublyLinkBean previous;
+	public DoublyLinkBean<T> next;
+	public T iData;
+	public DoublyLinkBean<T> previous;
 	
-	public DoublyLinkBean(int iData) {
+	public DoublyLinkBean(T iData) {
 		this.iData = iData;
 	}
 	

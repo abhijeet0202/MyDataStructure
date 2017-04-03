@@ -167,8 +167,8 @@ public class SinglyLinkList<T> {
 	 * 
 	 */
 	@SuppressWarnings("unchecked")
-	T find(int element){
-		SinglyLinkBean<Integer> current = (SinglyLinkBean<Integer>) first;
+	T find(T element){
+		SinglyLinkBean<T> current = (SinglyLinkBean<T>) first;
 		
 		if(!isEmpty()){
 			while(current != null){

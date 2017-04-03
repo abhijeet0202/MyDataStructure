@@ -3,17 +3,14 @@
  */
 package LinkedList;
 
-import java.util.Scanner;
-
 /**
  * @author Aryan
  *
  */
-public class DoublyLinkList {
+public class DoublyLinkList<T> {
 	
-	private DoublyLinkBean first;
-	private DoublyLinkBean last;
-	private Scanner scan;
+	private DoublyLinkBean<T> first;
+	private DoublyLinkBean<T> last;
 	
 	
 	/*
@@ -37,10 +34,9 @@ public class DoublyLinkList {
 	 * 4. Now, copy the address of newly node to first. So that it starts pointing this
 	 *    node, and this way we created the one way at least.
 	 */
-	public void insertFirst() {
-		scan = new Scanner(System.in);
-		int iData = scan.nextInt();
-		DoublyLinkBean node = new DoublyLinkBean(iData);
+	public void insertFirst(T element) {
+		
+		DoublyLinkBean<T> node = new DoublyLinkBean<T>(element);
 		
 		
 		if (!isEmpty()) // If linked list is Empty
@@ -61,10 +57,9 @@ public class DoublyLinkList {
 	 * 3. copy the new node address into last.next
 	 * 4. Now, copy the address of newly node to last. 
 	 */
-	public void insertLast() {
-		scan = new Scanner(System.in);
-		int iData = scan.nextInt();
-		DoublyLinkBean node = new DoublyLinkBean(iData);
+	public void insertLast(T element) {
+		
+		DoublyLinkBean<T> node = new DoublyLinkBean<T>(element);
 		
 		if (!isEmpty()) // If linked list is Empty
 			first = node; // Add new node in first
@@ -85,12 +80,11 @@ public class DoublyLinkList {
 	 * 3. copy the new node address into last.next
 	 * 4. Now, copy the address of newly node to last. 
 	 */
-	public boolean insertAfter(int element) {
-		scan = new Scanner(System.in);
-		int iData = scan.nextInt();
-		DoublyLinkBean node = new DoublyLinkBean(iData);
+	public boolean insertAfter(T element) {
 		
-		DoublyLinkBean current = first;
+		DoublyLinkBean<T> node = new DoublyLinkBean<T>(element);
+		
+		DoublyLinkBean<T> current = first;
 		while (current.iData == element){
 			current = current.next;
 			if (current == null)
@@ -106,5 +100,120 @@ public class DoublyLinkList {
 		node.previous = current;
 		current.next = node;
 		return true;
+	}
+	
+	/*
+	 *******************************************************
+	 * DELETE FIRST
+	 *******************************************************
+	 * Step 1: If list is empty simply throw error.
+	 * Step 2: Corner Case - if only one node present (first.next ==null),
+	 * 		   this means we need to handle "last" also,Assign "last" as null 
+	 * 		   And, First.last automatically contains "null" so simply assign it to "first"
+	 * 		   So, now both "first" and "last" is null.
+	 * Step 3: Otherwise, Assign "null" to 2nd node's "previous", which actually 
+	 * 		   pointing to 1st node.(which need to be deleted).
+	 *        Then, assign first.next = first, which contains next address.
+	 */
+	@SuppressWarnings("unchecked")
+	T deleteFirst(){
+		DoublyLinkBean<T> current = first;
+		if(!isEmpty()){
+			if (first.next == null){
+				last = null;
+			} else {
+				first.next.previous = null;
+			}
+			first = first.next;
+		}else
+			System.out.println("No Node Exist");		
+		return (T)current;
+	}
+	
+	/*
+	 *******************************************************
+	 * DELETE LAST
+	 *******************************************************
+	 * Step 1: If list is empty simply throw error.
+	 * Step 2: Corner Case - if only one node present (first.next ==null),
+	 * 		   this means we need to last as null 
+	 * 		   And, First.last automatically contains "null" so simply assign it to "first"
+	 * 		   So, now both "first" and "last" is null.
+	 * Step 3: Otherwise, Assign "null" to 2nd's last node's "next", which actually 
+	 * 		   pointing to last node.(which need to be deleted). [last.previous.next= null]
+	 *        Then, assign last with last's->previous.
+	 */
+	@SuppressWarnings("unchecked")
+	T deleteLast(){
+		DoublyLinkBean<T> current = last;
+		if(!isEmpty()){
+			if (first.next == null){
+				last = null;
+			}else{
+				last.previous.next = null;
+			}
+			last = last.previous;
+		}else
+			System.out.println("No Node Exist");		
+		return (T)current;
+	}
+	
+	/*
+	 * 
+	 */
+	@SuppressWarnings("unchecked")
+	T deleteKey(T element){
+		DoublyLinkBean<T> current = first;
+		while (current.iData != element){
+			current = current.next;
+			if (current == null)
+				return null;
+		}
+		if (current == first){
+			first = current.next;
+		}else{
+			current.previous.next = current.next;
+		}
+		
+		if (current == last){
+			last = current.previous;
+		}else{
+			current.next.previous = current.previous;
+		}
+		return(T)current;
+	}
+	
+	/*
+	 * ******************************************************
+	 * DISPLAY COMPLETE LIST
+	 * ****************************************************** 
+	 * 1. Copy the reference of "first" in another variable "current"
+	 * 2. Iterate the loop until "current" encountered null
+	 * 		Display the content.
+	 * 		Increment the "current" with "current.next"  
+	 */
+	void displayForwardList() {
+		DoublyLinkBean<T> current = (DoublyLinkBean<T>) first;
+		while (current != null) {
+			current.display();
+			current = current.next;
+		}
+	}
+	
+	/*
+	 * ******************************************************
+	 * DISPLAY COMPLETE LIST
+	 * ****************************************************** 
+	 * 1. Copy the reference of "last" in another variable "current"
+	 * 2. Iterate the loop until "current" encountered null
+	 * 		Display the content.
+	 * 		Increment the "current" with "current.previous"  
+	 */
+	void displayBackwardList() {
+		DoublyLinkBean<T> current = (DoublyLinkBean<T>) last;
+		while (current != null) {
+			current.display();
+			current = current.previous;
+		}
 	}
 }
