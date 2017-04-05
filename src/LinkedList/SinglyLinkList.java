@@ -192,24 +192,25 @@ public class SinglyLinkList<T> {
 	 * 		Display the content.
 	 * 		Increment the "current" with "current.next"  
 	 */
-	@SuppressWarnings("unchecked")
 	void displayList() {
-		SinglyLinkBean<Integer> current = (SinglyLinkBean<Integer>) first;
+		SinglyLinkBean<T> current = (SinglyLinkBean<T>) first;
 		while (current != null) {
 			current.display();
 			current = current.next;
 		}
 	}
 
-	public static void main(String[] args) {
-		/*SinglyLinkList<Integer> linkList = new SinglyLinkList<Integer>();
-		linkList.deleteFirst();
-		linkList.insertFirst();
-		linkList.insertFirst();
-		System.out.println("Node " + linkList.deleteFirst() + " deleted");
-		linkList.insertFirst();
-		SinglyLinkBean<Integer> bean = linkList.deleteNode(2);
-		System.out.println("Node " + bean.display() + " deleted");
-		linkList.displayList();*/
+
+	
+	public SinglyLinkBean<T> getFirst(){
+		return first;
+	}
+	
+	public void setFirst(SinglyLinkBean<T> f){
+		first = f;
+	}
+	
+	public Iterator<T> getIterator(){
+		return new Iterator<T>(this);
 	}
 }
