@@ -1,11 +1,8 @@
 package BinaryTree;
 
-import java.util.Scanner;
+public class BinaryTree<T extends Comparable<T>>{
 
-public class BinaryTree {
-
-	public static BinaryTreeBean root;
-	Scanner scan;
+	public BinaryTreeBean<T> root;
 
 	/************************************************************************************************************************
 	 * FIND
@@ -18,15 +15,21 @@ public class BinaryTree {
 	 * 	3b. If Node Data is greater than newly node data
 	 * 	    3b1. Else Move current = current.rightChild
 	 *  3c. if Current is == null, return 
+	 *  
+	 *  Efficiency : O(LogN)
 	 */
-	public BinaryTreeBean find(int element) {
-		BinaryTreeBean current = root;
+	public BinaryTreeBean<T> find(T element) {
+		BinaryTreeBean<T> current = root;
 
-		while (current.iData != element) {
-			if (element < current.iData)
+		if (current == null)
+			return null;
+		
+		while (current.iData.compareTo(element)!= 0) {
+			if (current.iData.compareTo(element) > 0)
 				current = current.leftChild;
 			else
 				current = current.rightChild;
+			
 			if (current == null)
 				return null;
 		}
@@ -37,7 +40,7 @@ public class BinaryTree {
 	 * INSERT
 	 * **********************************************************************************************************************
 	 * 1. Check If root is null or not, if root is null, then simply assign address of newly node to root.
-	 * 2. Otherwise, Start Iterate infinitly,
+	 * 2. Otherwise, Start Iterate infinitely,
 	 * 3. Assign Current as root;
 	 * 	3a. Check if node Data is less than newly node Data, if YES.
 	 * 		3a1. Check if Current node left Data is null or not, if null, simply assign the newly node ref in current.leftChild 
@@ -46,19 +49,19 @@ public class BinaryTree {
 	 * 		3b1. Check if Current node right Data is null or not, if null, simply assign the newly node ref in current.rightChild 
 	 * 		3a2. Else Move current = current.rightChild
 	 */
-	public BinaryTreeBean insert(){
-		BinaryTreeBean current = root;
+	public BinaryTreeBean<T> insert(T element){
+		BinaryTreeBean<T> current = root;
 		
-		scan = new Scanner(System.in);
-		int iData = scan.nextInt();
-		BinaryTreeBean node = new BinaryTreeBean(iData);
+		
+		BinaryTreeBean<T> node = new BinaryTreeBean<T>(element);
 		
 		if (null == root){
 			root = node;
 			return root;
+			
 		} else {
 			while (true){
-				if (iData < current.iData){
+				if (current.iData.compareTo(element) > 0){
 					if (current.leftChild == null){
 						current.leftChild = node;
 						return current;
@@ -106,7 +109,7 @@ public class BinaryTree {
 	 * |return                |	 |return      		    |			|return                |	 |return      		    |
 	 * ------------------------  ------------------------			------------------------      -----------------------
 	 */
-	public void inOrderTraversal(BinaryTreeBean root){
+	public void inOrderTraversal(BinaryTreeBean<T> root){
 		
 		if (root != null){
 			inOrderTraversal(root.leftChild);
@@ -145,7 +148,7 @@ public class BinaryTree {
 	 * |return                |	 |return      		    |			|return                |	 |return      		    |
 	 * ------------------------  ------------------------			------------------------      -----------------------
 	 */
-	public void preOrderTraversal(BinaryTreeBean root){
+	public void preOrderTraversal(BinaryTreeBean<T> root){
 
 		if (root != null) {
 
@@ -185,7 +188,7 @@ public class BinaryTree {
 	 * |return                |	 |return      		    |			|return                |	 |return      		    |
 	 * ------------------------  ------------------------			------------------------      -----------------------
 	 */
-	public void postOrderTraversal(BinaryTreeBean root){
+	public void postOrderTraversal(BinaryTreeBean<T> root){
 
 		if (root != null) {
 
@@ -203,17 +206,17 @@ public class BinaryTree {
 	 * 2. The node to be deleted has one child.
      * 3. The node to be deleted has two children. 
 	 */
-	public BinaryTreeBean delete(int element){
-		BinaryTreeBean current = root;
-		BinaryTreeBean parent = null;
+	public BinaryTreeBean<T> delete(T element){
+		BinaryTreeBean<T> current = root;
+		BinaryTreeBean<T> parent = null;
 		boolean isLeftNode = true;
 		if (root == null){
 			System.out.println("No Element Exist To Delete");
 			return null;
 		}
 		
-		while (current.iData != element){
-			if (element < current.iData){
+		while (current.iData.compareTo(element) != 0){
+			if (current.iData.compareTo(element) > 0){
 				parent = current;
 				current = current.leftChild;
 				isLeftNode = true;
@@ -231,12 +234,16 @@ public class BinaryTree {
 		if ((null == current.leftChild) && (null == current.rightChild)){
 			return deleteLeaf(current,parent,isLeftNode);
 		} else if(((null != current.leftChild) && (null == current.rightChild))){
-			if (current == root)
+			if (current == root){
 				root = current.leftChild;
+				return root;
+			}
 			return deleteSingleChildNode(current,parent, isLeftNode);
 		} else if(((null == current.leftChild) && (null != current.rightChild))){
-			if (current == root)
+			if (current == root){
 				root = current.rightChild;
+				return root;
+			}
 			return deleteSingleChildNode(current,parent, isLeftNode);
 		}else {
 			return deleteDoubleChildNode(current,parent,isLeftNode);
@@ -248,7 +255,7 @@ public class BinaryTree {
 	 * **********************************************************************************************************************
 	 * Make Parent as NULL, and return Current (i.e. Deleted Node)
 	 */
-	private BinaryTreeBean deleteLeaf(BinaryTreeBean current,BinaryTreeBean parent, boolean isLeftNode){
+	private BinaryTreeBean<T> deleteLeaf(BinaryTreeBean<T> current,BinaryTreeBean<T> parent, boolean isLeftNode){
 		if (current == root)
 			root = null;
 		else if (isLeftNode){
@@ -258,8 +265,12 @@ public class BinaryTree {
 		}
 		return current;
 	}
-	
-	private BinaryTreeBean deleteSingleChildNode(BinaryTreeBean current,BinaryTreeBean parent, boolean isLeftNode){
+	/*
+	 * 4 Variation could be possible with below combination.
+	 *  1. Child of the node (to be deleted) may be either a left child or right child.
+	 *  2. Also node (to be deleted) may be either left or right child of its parent so we need to k 
+	 */
+	private BinaryTreeBean<T> deleteSingleChildNode(BinaryTreeBean<T> current,BinaryTreeBean<T> parent, boolean isLeftNode){
 		
 		if (isLeftNode){
 			parent.leftChild = current.leftChild;
@@ -269,12 +280,12 @@ public class BinaryTree {
 		return current;
 	}
 	
-	private BinaryTreeBean deleteDoubleChildNode(BinaryTreeBean current, BinaryTreeBean parent, boolean isLeftNode) {
+	private BinaryTreeBean<T> deleteDoubleChildNode(BinaryTreeBean<T> current, BinaryTreeBean<T> parent, boolean isLeftNode) {
 		
 		
 		/////Need to re verify..few points may miss
-		BinaryTreeBean deletableNode = current;
-		BinaryTreeBean successorNode = null;
+		BinaryTreeBean<T> deletableNode = current;
+		BinaryTreeBean<T> successorNode = null;
 		current = current.rightChild;
 
 		while (null != current.leftChild) {
@@ -292,29 +303,5 @@ public class BinaryTree {
 		}
 		return deletableNode;
 	}
-	public static void main(String[] args) {
-		BinaryTree binaryTree = new BinaryTree();
-		binaryTree.insert();
-		binaryTree.inOrderTraversal(root);
-		binaryTree.insert();
-		binaryTree.inOrderTraversal(root);
-		binaryTree.insert();
-		binaryTree.inOrderTraversal(root);
-		binaryTree.insert();
-		binaryTree.inOrderTraversal(root);
-		binaryTree.insert();
-		binaryTree.inOrderTraversal(root);
-		binaryTree.insert();
-		binaryTree.inOrderTraversal(root);
-		binaryTree.insert();
-		binaryTree.inOrderTraversal(root);
-		binaryTree.insert();
-		binaryTree.inOrderTraversal(root);
-		System.out.println();
-		binaryTree.preOrderTraversal(root);
-		System.out.println();
-		binaryTree.postOrderTraversal(root);
-		
-	}
-
+	
 }

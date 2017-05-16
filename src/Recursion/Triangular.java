@@ -26,7 +26,7 @@ int  Recursion(int num){
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Triangular obj = new Triangular(3);
+		new Triangular(3);
 
 	}
 

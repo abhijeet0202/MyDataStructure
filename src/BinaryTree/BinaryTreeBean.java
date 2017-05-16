@@ -7,13 +7,20 @@ package BinaryTree;
  * @author Aryan
  *
  */
-public class BinaryTreeBean {
+public class BinaryTreeBean<T extends Comparable<T>>{
 
-	int iData;
-	BinaryTreeBean leftChild;
-	BinaryTreeBean rightChild;
+	T iData;
+	BinaryTreeBean<T> leftChild;
+	BinaryTreeBean<T> rightChild;
 	
-	public BinaryTreeBean(int iData) {
+	public BinaryTreeBean(T iData) {
 		this.iData = iData;
+		leftChild = null;
+		rightChild = null;
+	}
+	
+	public String display(){
+		System.out.print("{" + iData + "}--> ");
+		return "";
 	}
 }
