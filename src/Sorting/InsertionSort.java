@@ -14,6 +14,7 @@ public class InsertionSort {
 		myArray = new int[size];
 		System.out.println("Enter Elements");
 		for (int i = 0; i < size; i++) {
+			
 			int min = scan.nextInt();
 			int j = i - 1;
 			for ( ;((j >= 0) && (myArray[j] > min)); ) {
