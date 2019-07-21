@@ -54,7 +54,7 @@ final class AnagramApplication {
 	}
 
 	public static void main(String[] args) {
-		String input = "pigsty";
+		String input = "cat";
 		size = input.length(); // find its size
 		count = 0;
 		for (int j = 0; j < size; j++) // put it in array

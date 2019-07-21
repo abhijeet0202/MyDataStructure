@@ -111,7 +111,7 @@ public class BinaryTree<T extends Comparable<T>>{
 	 */
 	public void inOrderTraversal(BinaryTreeBean<T> root){
 		
-		if (root != null){
+	if (root != null){
 			inOrderTraversal(root.leftChild);
 			System.out.print(root.iData+"-->");
 			inOrderTraversal(root.rightChild);
