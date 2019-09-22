@@ -20,12 +20,7 @@ public abstract class Employee {
 		this.empAge = empAge;
 	}
 	
-	void display(Employee arr[], int length){
-		for (int i =0 ;i<length; i++){
-			if (arr[i] != null )
-				System.out.println(arr[i]+"Inside Index:->"+i);
-		}
-	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -40,4 +35,6 @@ public abstract class Employee {
 	abstract void insert();
 	abstract void delete();
 	abstract int find();
+	
+	
 }

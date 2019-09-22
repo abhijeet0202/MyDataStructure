@@ -109,7 +109,7 @@ public final class ArrayWithNoDupsNoOrdered extends Employee {
 	}
 
 	public static void main(String[] args) {
-		int size = 10;
+		/*int size = 10;
 		employeeDatabase = new ArrayWithNoDupsNoOrdered[size];
 		Employee employee = null;
 
@@ -135,6 +135,6 @@ public final class ArrayWithNoDupsNoOrdered extends Employee {
 		employee.find();
 		employee.delete();
 		System.out.println("*****************Current Size:"+currentIndex);
-		employee.display(employeeDatabase, employeeDatabase.length);
+		employee.display(employeeDatabase, employeeDatabase.length);*/
 	}
 }
