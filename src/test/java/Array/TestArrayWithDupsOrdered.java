@@ -3,8 +3,6 @@
  */
 package Array;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -54,14 +52,6 @@ public class TestArrayWithDupsOrdered {
 		arrayWithDupsOrdered10 = new ArrayWithDupsOrdered(10,"Abhijeet", 20);
 		arrayWithDupsOrdered11 = new ArrayWithDupsOrdered(11,"Abhijeet", 20);
 		arrayWithDupsOrdered12 = new ArrayWithDupsOrdered(12,"Abhijeet", 20);
-	}
-
-
-	/**
-	 * Test method for {@link Array.ArrayWithDupsOrdered#insert()}.
-	 */
-	@Test
-	public void testInsert() {
 		arrayWithDupsOrdered4.insert();
 		arrayWithDupsOrdered10.insert();
 		arrayWithDupsOrdered3.insert();
@@ -74,7 +64,14 @@ public class TestArrayWithDupsOrdered {
 		arrayWithDupsOrdered6.insert();
 		arrayWithDupsOrdered9.insert();
 		arrayWithDupsOrdered7.insert();
-		
+	}
+
+
+	/**
+	 * Test method for {@link Array.ArrayWithDupsOrdered#insert()}.
+	 */
+	@Test
+	public void testInsert() {		
 		arrayWithDupsOrdered = new ArrayWithDupsOrdered(0,"MAX_SIZE_REACH", 20);
 		arrayWithDupsOrdered.insert();
 	}
@@ -84,7 +81,21 @@ public class TestArrayWithDupsOrdered {
 	 */
 	@Test
 	public void testDelete() {
-		fail("Not yet implemented");
+		arrayWithDupsOrdered10.delete();
+		arrayWithDupsOrdered4.delete();
+		arrayWithDupsOrdered10.delete();
+		arrayWithDupsOrdered3.delete();
+		arrayWithDupsOrdered1.delete();
+		arrayWithDupsOrdered12.delete();
+		arrayWithDupsOrdered2.delete();
+		arrayWithDupsOrdered8.delete();
+		arrayWithDupsOrdered11.delete();
+		arrayWithDupsOrdered5.delete();
+		arrayWithDupsOrdered6.delete();
+		arrayWithDupsOrdered9.delete();
+		arrayWithDupsOrdered7.delete();
+		
+		arrayWithDupsOrdered1.delete();
 	}
 
 	/**
@@ -92,7 +103,10 @@ public class TestArrayWithDupsOrdered {
 	 */
 	@Test
 	public void testFind() {
-		fail("Not yet implemented");
+		arrayWithDupsOrdered10.find();
+		
+		arrayWithDupsOrdered = new ArrayWithDupsOrdered(0,"NOT_ABLE_TO_FOUND", 20);
+		arrayWithDupsOrdered.find();
 	}
 
 }

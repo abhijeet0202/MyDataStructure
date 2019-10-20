@@ -10,6 +10,7 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.5.1</version>
         <configuration>
+        <release>9</release>
           <source/>
           <target/>
         </configuration>
