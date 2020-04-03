@@ -87,38 +87,9 @@ public class ArrayWithDupsOrdered extends Employee {
 	 ****************************************************************************/
 	@Override
 	void delete() {
-		// Initializing lower Index and Higher index [ Assumption]
-		int lowerIndex = 0, higherIndex = currentIndex;
-		int currentLocation = 0;
-
-		if (currentIndex == -1) {
-			System.out.println("No Data present in DB to delete");
-		}
-
-		while (true) {
-			currentLocation = (lowerIndex + higherIndex) / 2;
-
-			// Check if currentLocation data is matching with element or not
-			if (employeeDatabase[currentLocation].empId == this.empId) {
-				System.out.println("Employee Id: " + employeeDatabase[currentLocation].empId + " is present in index :"
-						+ currentLocation);
-				break;
-			} else {
-				if (employeeDatabase[currentLocation].empId <= this.empId) {
-					lowerIndex = currentLocation + 1;
-					if (lowerIndex > higherIndex) {
-						break;
-					}
-				} else {
-					higherIndex = currentLocation - 1;
-					if (lowerIndex > higherIndex) {
-						break;
-					}
-				}
-			}
-
-		}
-		for (int index = currentIndex; index >= currentLocation; index--) {
+		int currentLocation = find();
+		if (currentLocation == -1)return;
+		for (int index = currentIndex; index > currentLocation; currentLocation++) {
 			employeeDatabase[currentLocation] = employeeDatabase[currentLocation + 1];
 		}
 

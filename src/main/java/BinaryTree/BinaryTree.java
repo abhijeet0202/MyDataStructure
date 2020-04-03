@@ -11,9 +11,9 @@ public class BinaryTree<T extends Comparable<T>>{
 	 * 2. Assign Current as root
 	 * 3. Otherwise, Start Iterate until KeyElement is not equal to current data,
 	 * 	3a. Check if node Data is less than newly node Data, if YES.
-	 * 		3a1. Else Move current = current.leftChild
+	 * 		3a1.  Move current = current.leftChild
 	 * 	3b. If Node Data is greater than newly node data
-	 * 	    3b1. Else Move current = current.rightChild
+	 * 	    3b1. s Move current = current.rightChild
 	 *  3c. if Current is == null, return 
 	 *  
 	 *  Efficiency : O(LogN)
@@ -153,8 +153,8 @@ public class BinaryTree<T extends Comparable<T>>{
 		if (root != null) {
 
 			System.out.print(root.iData + "-->");
-			inOrderTraversal(root.leftChild);
-			inOrderTraversal(root.rightChild);
+			preOrderTraversal(root.leftChild);
+			preOrderTraversal(root.rightChild);
 		}
 	}
 	
@@ -189,11 +189,10 @@ public class BinaryTree<T extends Comparable<T>>{
 	 * ------------------------  ------------------------			------------------------      -----------------------
 	 */
 	public void postOrderTraversal(BinaryTreeBean<T> root){
-
 		if (root != null) {
 
-			inOrderTraversal(root.leftChild);
-			inOrderTraversal(root.rightChild);
+			postOrderTraversal(root.leftChild);
+			postOrderTraversal(root.rightChild);
 			System.out.print(root.iData + "-->");
 		}
 	}
@@ -233,20 +232,11 @@ public class BinaryTree<T extends Comparable<T>>{
 		
 		if ((null == current.leftChild) && (null == current.rightChild)){
 			return deleteLeaf(current,parent,isLeftNode);
-		} else if(((null != current.leftChild) && (null == current.rightChild))){
-			if (current == root){
-				root = current.leftChild;
-				return root;
-			}
-			return deleteSingleChildNode(current,parent, isLeftNode);
-		} else if(((null == current.leftChild) && (null != current.rightChild))){
-			if (current == root){
-				root = current.rightChild;
-				return root;
-			}
-			return deleteSingleChildNode(current,parent, isLeftNode);
+		} else if(((null != current.leftChild) && (null != current.rightChild))){
+			
+			return deleteDoubleChildNode(current, parent, isLeftNode);
 		}else {
-			return deleteDoubleChildNode(current,parent,isLeftNode);
+			return deleteSingleChildNode(current,parent,isLeftNode);
 		}
 		
 	}
@@ -270,37 +260,58 @@ public class BinaryTree<T extends Comparable<T>>{
 	 *  1. Child of the node (to be deleted) may be either a left child or right child.
 	 *  2. Also node (to be deleted) may be either left or right child of its parent so we need to k 
 	 */
-	private BinaryTreeBean<T> deleteSingleChildNode(BinaryTreeBean<T> current,BinaryTreeBean<T> parent, boolean isLeftNode){
-		
-		if (isLeftNode){
-			parent.leftChild = current.leftChild;
-		}else{
-			parent.rightChild = current.rightChild;
+	private BinaryTreeBean<T> deleteSingleChildNode(BinaryTreeBean<T> current, BinaryTreeBean<T> parent,
+			boolean isLeftNode) {
+		if ((null != current.leftChild)) {
+			if (current == root) {
+				root = current.leftChild;
+				return root;
+			}
+			if (isLeftNode) {
+				parent.leftChild = current.leftChild;
+			} else {
+				parent.rightChild = current.leftChild;
+			}
+		} else {
+			if (current == root) {
+				root = current.rightChild;
+				return root;
+			}
+			if (isLeftNode) {
+				parent.leftChild = current.rightChild;
+			} else {
+				parent.rightChild = current.rightChild;
+			}
 		}
+
 		return current;
 	}
 	
 	private BinaryTreeBean<T> deleteDoubleChildNode(BinaryTreeBean<T> current, BinaryTreeBean<T> parent, boolean isLeftNode) {
 		
-		
-		/////Need to re verify..few points may miss
+		// cuurent is successur
 		BinaryTreeBean<T> deletableNode = current;
-		BinaryTreeBean<T> successorNode = null;
+		BinaryTreeBean<T> parentSuccessorNode = null;
 		current = current.rightChild;
 
 		while (null != current.leftChild) {
-			successorNode = current;
+			parentSuccessorNode = current;
 			current = current.leftChild;
 		}
-		successorNode.rightChild = current.rightChild;
-		current.leftChild = deletableNode.leftChild;
-		current.rightChild = deletableNode.rightChild;
-		if (isLeftNode) {
-
+		
+		if (deletableNode.rightChild != current) {
+			parentSuccessorNode.leftChild = current.rightChild;
+			current.rightChild = deletableNode.rightChild;
+		}
+		if(deletableNode == root) {
+			root = current;
+		}
+		else if (isLeftNode) {
 			parent.leftChild = current;
 		} else {
 			parent.rightChild = current;
 		}
+		current.leftChild = deletableNode.leftChild;
 		return deletableNode;
 	}
 	
