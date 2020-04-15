@@ -422,5 +422,16 @@ public class TestBinaryTree {
 		myTree.postOrderTraversal(myTree.root);
 		System.out.println();
 	}
+	
+	@Test
+	public void testDiameterOFTree() {
+		BinaryTree<Integer> myTree = new BinaryTree<Integer>();
+		myTree.insert(1);
+		myTree.insert(2);
+		myTree.insert(3);
+		myTree.insert(4);
+		myTree.insert(5);
+		System.out.println(myTree.diameterOfTree());
+	}
 
 }

@@ -315,4 +315,48 @@ public class BinaryTree<T extends Comparable<T>>{
 		return deletableNode;
 	}
 	
+	/**
+	 * Given a binary tree, you need to compute the length of the diameter of the
+	 * tree. The diameter of a binary tree is the length of the longest path between
+	 * any two nodes in a tree. This path may or may not pass through the root.
+	 * Example:Given a binary tree
+	 * 
+	 * 			1 
+	 * 		   / \ 
+	 *        2   3 
+	 *       / \ 
+	 *      4   5
+	 * 
+	 * Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
+	 * 
+	 * Note: The length of path between two nodes is represented by the number of
+	 * edges between them.
+	 * 
+	 * @return
+	 */
+	public int diameterOfTree() {
+		Diameter diameter = new Diameter();
+		 height(root, diameter);
+		 return diameter.height;
+	    }
+	
+	private int height(BinaryTreeBean<T> node, Diameter a) {
+		if (node == null)  
+	        return 0;  
+	  
+	    int left_height = height(node.leftChild, a);  
+	  
+	    int right_height = height(node.rightChild, a);  
+	  
+	    // update the answer, because diameter of a  
+	    // tree is nothing but maximum value of  
+	    // (left_height + right_height + 1) for each node  
+	    a.height = Math.max(a.height, left_height + right_height);  
+	  
+	    return 1+Math.max(left_height, right_height);  
+	}
+	
+}
+class Diameter{
+	int height = Integer.MIN_VALUE;
 }

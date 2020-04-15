@@ -213,4 +213,22 @@ public class SinglyLinkList<T> {
 	public Iterator<T> getIterator(){
 		return new Iterator<T>(this);
 	}
+	
+	public SinglyLinkBean<T> getMiddleNode(){
+		if (first == null) {
+			return first;
+		}
+		SinglyLinkBean<T> fast = first;
+		SinglyLinkBean<T> slow = first;
+		
+		while(fast.next != null) {
+			if(fast.next.next != null) {
+				fast = fast.next.next;
+			}else {
+				fast= fast.next;
+			}
+			slow = slow.next;
+		}
+		return slow;
+	}
 }

@@ -260,5 +260,20 @@ public class TestSinglyLinkList {
 		System.out.println("====");
 		linkList.displayList();
 	}
+	
+	@Test
+	public void testFindMiddle() {
+		SinglyLinkList<Integer> linkList = new SinglyLinkList<Integer>();
+		
+		//linkList.insertFirst(6);
+		linkList.insertFirst(5);
+		linkList.insertFirst(4);
+		linkList.insertFirst(3);
+		linkList.insertFirst(2);
+		linkList.insertFirst(1);
+		linkList.displayList();
+		linkList.getMiddleNode();
+	
+	}
 
 }

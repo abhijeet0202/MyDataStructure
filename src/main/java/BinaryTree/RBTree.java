@@ -3,12 +3,16 @@
  */
 package BinaryTree;
 
+import java.lang.management.GarbageCollectorMXBean;
+
 /**
  * Rules: When inserting (or deleting) a new node, certain rules, must be
  * followed. If they're followed, the tree will be balanced.
  * 
- * 1> Every node is either RED or BLACK 2> The ROOT is always black. 3> If any
- * NODE color is RED, it children MUST be BLACK. 4> Every path from the "ROOT to
+ * 1> Every node is either RED or BLACK 
+ * 2> The ROOT is always black. 
+ * 3> If any NODE color is RED, it children MUST be BLACK. 
+ * 4> Every path from the "ROOT to
  * a LEAF" or "ROOT to a NON-LEAF" MUST contain same number of BLACK NODES.
  * NULL-CHILD : New node ready to attached to a NON-LEAF(i.e. Node have only one
  * child) * The number of BLACK NODES on a path from ROOT to LEAF is called the
@@ -25,7 +29,21 @@ package BinaryTree;
 public class RBTree<T extends Comparable<T>> {
 
 	public RBTreeBean<T> root;
+	RBTreeBean<T> current = null;;
+	RBTreeBean<T> parent = null;
+	RBTreeBean<T> grandParent = null;
+	RBTreeBean<T> greatGrandParent = null;
 
+	public void inOrderTraversal(RBTreeBean<T> root){
+		
+		if (root != null){
+				inOrderTraversal(root.leftChild);
+				if(root.isDeleted != true) {
+					System.out.print(root.iData+"["+(root.isRed?"Red":"Black")+"]-->");
+				}
+				inOrderTraversal(root.rightChild);
+			}
+		}
 	/*
 	 * Representation : 
 	 * 			X: we will denote as newly node ready to attach.
@@ -49,10 +67,10 @@ public class RBTree<T extends Comparable<T>> {
 	 */
 	public RBTreeBean<T> insert(T element) {
 		RBTreeBean<T> node = new RBTreeBean<T>(element);
-		RBTreeBean<T> current = root;
-		RBTreeBean<T> parent = null;
-		RBTreeBean<T> grandParent = null;
-		RBTreeBean<T> greatGrandParent = null;
+		 current = root;
+		 parent = null;
+		 grandParent = null;
+		 greatGrandParent = null;
 
 		if (root == null) {
 			root = node;
@@ -153,9 +171,9 @@ public class RBTree<T extends Comparable<T>> {
 	 * 3. P is red and X is an inside grandchild of G.
 	 */
 	private void rotate(RBTreeBean<T> current,RBTreeBean<T> parent, RBTreeBean<T> grandParent, RBTreeBean<T> greatGrandParent) {
-		if(greatGrandParent != null && grandParent != null && parent !=null && current !=null) {
-		if(parent.isRed != false && (current ==parent.leftChild && parent == grandParent.leftChild) || 
-				(current == parent.rightChild && parent == grandParent.rightChild)) {
+		if(grandParent != null && parent !=null && current !=null) {
+		if(parent.isRed != false && ((current ==parent.leftChild && parent == grandParent.leftChild) || 
+				(current == parent.rightChild && parent == grandParent.rightChild))) {
 			//SITUATION 2 : P is red and X is an outside grand child of G.
 			
 			//STEP 1: Switch the color of X’s grandparent
@@ -184,13 +202,14 @@ public class RBTree<T extends Comparable<T>> {
 			//STEP 3: 
 			if(parent == grandParent.leftChild) {
 				grandParent.leftChild = current;
+				parent.rightChild = current.leftChild;
 				//if (Check is REQUIRED to check placing of current and parent relation, where is sitauted)
 				current.leftChild =parent;
-				parent.rightChild=null;
 			}else {
 				grandParent.rightChild=current;
+				parent.leftChild =current.rightChild;
 				current.rightChild =parent;
-				parent.leftChild =null;
+				
 			}
 			
 			rotateSecond(parent, current, grandParent, greatGrandParent);
@@ -200,12 +219,28 @@ public class RBTree<T extends Comparable<T>> {
 		}
 	}
 	private void rotateSecond(RBTreeBean<T> current,RBTreeBean<T> parent, RBTreeBean<T> grandParent, RBTreeBean<T> greatGrandParent) {
-		if (greatGrandParent.leftChild == grandParent) {
-			greatGrandParent.leftChild = parent;
+		if(greatGrandParent == null && grandParent ==root) {
+			if(grandParent.leftChild == parent) {
+				grandParent.leftChild = parent.rightChild;
+				parent.rightChild =grandParent;
+				root=parent;
+			}else {
+				grandParent.rightChild = parent.leftChild;
+				parent.leftChild =grandParent;
+				root=parent;
+			}
+			doColorFlipOnTheWayDown(parent, null, null, null);
 		}else {
-			greatGrandParent.rightChild = parent;
-		}			
-		parent.rightChild = grandParent;
+			if (greatGrandParent.leftChild == grandParent) {
+				greatGrandParent.leftChild = parent;
+				grandParent.leftChild=null;
+				parent.rightChild = grandParent;
+			}else {
+				greatGrandParent.rightChild = parent;
+				grandParent.rightChild=null;
+				parent.leftChild = grandParent;
+			}			
+		}
 	}
 
 }
