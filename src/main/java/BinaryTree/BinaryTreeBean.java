@@ -19,7 +19,7 @@ public class BinaryTreeBean<T extends Comparable<T>>{
 		rightChild = null;
 	}
 	
-	public String display(){
+	public String toString(){
 		System.out.print("{" + iData + "}--> ");
 		return "";
 	}
