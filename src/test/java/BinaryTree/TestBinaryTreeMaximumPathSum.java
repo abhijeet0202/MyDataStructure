@@ -47,5 +47,77 @@ public class TestBinaryTreeMaximumPathSum {
 		
 		Assert.assertEquals(42, myObj.binaryTreeMaximumPathSum(node));
 	}
+	
+	@Test
+	public void testCheckValidSequenceFromRootToLeaves() {
+		BinaryTreeBean<Integer> node = new BinaryTreeBean<Integer>(0);
+		List<Integer> bstArray = new ArrayList<Integer>();
+		bstArray.add(0);
+		bstArray.add(1);
+		bstArray.add(0);
+		bstArray.add(0);
+		bstArray.add(1);
+		bstArray.add(0);
+		bstArray.add(null);
+		bstArray.add(null);
+		bstArray.add(1);
+		bstArray.add(0);
+		bstArray.add(0);
+		System.out.println(bstArray);
+		int []arr = new int[] {0,1,0,1}; 
+		ConstructBinaryTreeFromArray myObj = new ConstructBinaryTreeFromArray();
+		node = myObj.constructBinaryTree(bstArray, node, 0);
+		
+		
+		Assert.assertEquals(true, myObj.checkValidSequenceFromRootToLeaves(node,arr));
+	}
+	
+	@Test
+	public void testCheckValidSequenceFromRootToLeaves1() {
+		BinaryTreeBean<Integer> node = new BinaryTreeBean<Integer>(0);
+		List<Integer> bstArray = new ArrayList<Integer>();
+		bstArray.add(0);
+		bstArray.add(1);
+		bstArray.add(0);
+		bstArray.add(0);
+		bstArray.add(1);
+		bstArray.add(0);
+		bstArray.add(null);
+		bstArray.add(null);
+		bstArray.add(1);
+		bstArray.add(0);
+		bstArray.add(0);
+		System.out.println(bstArray);
+		int []arr = new int[] {0,0,1}; 
+		ConstructBinaryTreeFromArray myObj = new ConstructBinaryTreeFromArray();
+		node = myObj.constructBinaryTree(bstArray, node, 0);
+		
+		
+		Assert.assertEquals(false, myObj.checkValidSequenceFromRootToLeaves(node,arr));
+	}
+	
+	@Test
+	public void testCheckValidSequenceFromRootToLeaves2() {
+		BinaryTreeBean<Integer> node = new BinaryTreeBean<Integer>(0);
+		List<Integer> bstArray = new ArrayList<Integer>();
+		bstArray.add(0);
+		bstArray.add(1);
+		bstArray.add(0);
+		bstArray.add(0);
+		bstArray.add(1);
+		bstArray.add(0);
+		bstArray.add(null);
+		bstArray.add(null);
+		bstArray.add(1);
+		bstArray.add(0);
+		bstArray.add(0);
+		System.out.println(bstArray);
+		int []arr = new int[] {0,1,1}; 
+		ConstructBinaryTreeFromArray myObj = new ConstructBinaryTreeFromArray();
+		node = myObj.constructBinaryTree(bstArray, node, 0);
+		
+		
+		Assert.assertEquals(false, myObj.checkValidSequenceFromRootToLeaves(node,arr));
+	}
 
 }
