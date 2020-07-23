@@ -16,6 +16,20 @@ public class TestHeapArray {
 	@After
 	public void tearDown() throws Exception {
 	}
+	
+	@Test
+	public void testDelete() {
+		myArrayHeap.insert(5);
+		myArrayHeap.insert(70);
+		myArrayHeap.insert(45);
+		myArrayHeap.insert(50);
+		myArrayHeap.insert(80);
+		myArrayHeap.remove();
+		myArrayHeap.remove();
+		myArrayHeap.remove();
+		myArrayHeap.remove();
+		myArrayHeap.remove();
+	}
 
 	@Test
 	public void testInsert() {
