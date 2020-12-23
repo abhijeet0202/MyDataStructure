@@ -12,7 +12,7 @@ import java.util.Stack;
  * Rule 1: If possible, visit an adjacent unvisited vertex, mark it, and push it on the stack.
  * Rule 2: If you can’t follow Rule 1, then, if possible, pop a vertex off the stack and again start Rule 1
  * Rule 3: If you can’t follow Rule 1 or Rule 2, you’re done.
- * Rule3
+ * 
  * @author Abhijeet
  *
  * @param <T>

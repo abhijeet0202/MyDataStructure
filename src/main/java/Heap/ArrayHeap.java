@@ -7,7 +7,7 @@ import java.util.List;
  * A Heap is a Kind Of tree.it offers both insertion and deletion in O(LogN).
  * 
  * A heap is Binary tree, with these characteristics:
- * 		Its Complete: Its completly filled in, reading from left to right across each row.
+ * 		Its Complete: Its completely filled in, reading from left to right across each row.
  * 		Although the last row need not be full.
  * 		
  * 		Its usually implemented as an array,There is nothing to do with trees and nodes (i.e left or right child),
