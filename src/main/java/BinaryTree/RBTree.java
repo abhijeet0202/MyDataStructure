@@ -3,8 +3,6 @@
  */
 package BinaryTree;
 
-import java.lang.management.GarbageCollectorMXBean;
-
 /**
  * Rules: When inserting (or deleting) a new node, certain rules, must be
  * followed. If they're followed, the tree will be balanced.

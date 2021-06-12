@@ -28,7 +28,7 @@ public class Factorial {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new Factorial(99);
+		new Factorial(25);
 
 	}
 
