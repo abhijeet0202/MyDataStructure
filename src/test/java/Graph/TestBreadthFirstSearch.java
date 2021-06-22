@@ -19,7 +19,7 @@ public class TestBreadthFirstSearch {
 	}
 	@Test
 	public void test() {
-		myCharacterGraph = new Graph<Character>(5,false);
+		myCharacterGraph = new Graph<Character>(9,false);
 		
 		bfs = new BreadthFirstSearchImpl<Character>(myCharacterGraph);
 		myCharacterGraph.addVertex('A');
@@ -27,12 +27,23 @@ public class TestBreadthFirstSearch {
 		myCharacterGraph.addVertex('C');
 		myCharacterGraph.addVertex('D');
 		myCharacterGraph.addVertex('E');
+		myCharacterGraph.addVertex('F');
+		myCharacterGraph.addVertex('H');
+		myCharacterGraph.addVertex('G');
+		myCharacterGraph.addVertex('I');
 		
 		
 		myCharacterGraph.addEdges(0, 1);   //AB
-		myCharacterGraph.addEdges(1, 2);   //BC
+		myCharacterGraph.addEdges(0, 2);   //AC
 		myCharacterGraph.addEdges(0, 3);   //AD
-		myCharacterGraph.addEdges(3, 4);   //DE
+		myCharacterGraph.addEdges(0, 4);   //AE
+		
+		myCharacterGraph.addEdges(1, 5);   //BF
+		myCharacterGraph.addEdges(5, 6);   //FH
+		
+		
+		myCharacterGraph.addEdges(3, 7);   //DG
+		myCharacterGraph.addEdges(7, 8);   //GI
 		
 		bfs.doBFS();
 		

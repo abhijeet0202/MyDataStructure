@@ -4,9 +4,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestDepthFirstSearchImpl {
+public class TestDepththFirstSearchRecursion {
+
 	Graph<Character> myCharacterGraph = null;
-	DepthFirstSearchImpl<Character> dfs = null;
+	DepthFirstSearchRecursion<Character> dfs = null;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -17,10 +18,10 @@ public class TestDepthFirstSearchImpl {
 		myCharacterGraph = null;
 	}
 	@Test
-	public void testDepthFirstSearchImpl() {
+	public void test() {
 		myCharacterGraph = new Graph<Character>(9,false);
 		
-		dfs = new DepthFirstSearchImpl<Character>(myCharacterGraph);
+		dfs = new DepthFirstSearchRecursion<Character>(myCharacterGraph);
 		myCharacterGraph.addVertex('A');
 		myCharacterGraph.addVertex('B');
 		myCharacterGraph.addVertex('C');
@@ -44,7 +45,20 @@ public class TestDepthFirstSearchImpl {
 		myCharacterGraph.addEdges(3, 7);   //DG
 		myCharacterGraph.addEdges(7, 8);   //GI
 		
-		dfs.doDFS();
+		myCharacterGraph.addEdges(0, 0);   //AA
+		myCharacterGraph.addEdges(1, 1);   //BB
+		myCharacterGraph.addEdges(2, 2);   //CC
+		myCharacterGraph.addEdges(3, 3);   //DD
+		myCharacterGraph.addEdges(4, 4);   //EE
+		
+		myCharacterGraph.addEdges(5, 5);   //FF
+		myCharacterGraph.addEdges(6, 6);   //GG
+		
+		
+		myCharacterGraph.addEdges(7, 7);   //HH
+		myCharacterGraph.addEdges(8, 8);   //II
+		
+		dfs.doDFSRecursion();
 	}
 
 }
