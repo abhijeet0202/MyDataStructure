@@ -1,24 +1,24 @@
 package Graph;
 /**
- * Generic Vertex Structure which can support Weighted, Direction or No Weighted and no Direction
+ *  Vertex Structure which can support Weighted, Direction or No Weighted and no Direction
  * @author Abhijeet
  *
  */
-public class Vertex<T extends Comparable<T>> {
+public class Vertex {
 
-	T item;
-	boolean isVisited;
+	char item;
+	boolean wasVisited;
 	
-	public Vertex(T element) {
+	public Vertex(char element) {
 		this.item = element;
-		this.isVisited=false;
+		this.wasVisited=false;
 	}
 	
-	public T getItem() {
+	public char getItem() {
 		return this.item;
 	}
 	
-	public boolean isVisited() {
-		return this.isVisited;
+	public boolean wasVisited() {
+		return this.wasVisited;
 	}
 }
