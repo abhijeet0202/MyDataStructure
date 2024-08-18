@@ -21,7 +21,7 @@ public class BreadthFirstSearchImpl {
 		while (!bfsQueue.isEmpty()) {
 			Vertex current = bfsQueue.peek();
 			int index = bfs.getVertexIndex(current.item);
-			int vertexIndex = bfs.getAdjUnvisitedVertex(index);
+			int vertexIndex = bfs.getAdjUnvisitedVertex(index); 
 			if (vertexIndex == -1)
 				bfsQueue.poll();
 			else {
